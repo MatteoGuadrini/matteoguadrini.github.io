@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Matteo Guadrini&#39;s blog</title>
+    <link>https://matteoguadrini.github.io/posts/</link>
+    <description>Recent content in Posts on Matteo Guadrini&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© Matteo Guadrini</copyright>
+    <lastBuildDate>Sun, 20 Dec 2020 14:56:50 +0100</lastBuildDate>
+    
+	<atom:link href="https://matteoguadrini.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Simple Is Better Than Complex</title>
+      <link>https://matteoguadrini.github.io/posts/simple-is-better-than-complex/</link>
+      <pubDate>Sun, 20 Dec 2020 14:56:50 +0100</pubDate>
+      
+      <guid>https://matteoguadrini.github.io/posts/simple-is-better-than-complex/</guid>
+      <description>&amp;hellip;and complex is better than complicated.
+This has always been my motto. All my lines of code have simplicity as their primary goal.
+I decided to start this blog, to tell about my IT adventures, to describe all my projects and experiences, so that they can help others.
+Open Source To apply my motto, one of the principles that drives all my works, is the open source philosophy. Each of my projects is open source.</description>
+    </item>
+    
+  </channel>
+</rss>
