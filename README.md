@@ -5,7 +5,7 @@ This is my CV site and my personal blog. If you like the items, please leave a s
 
 ## My PyCV
 
-Save the content below in a python file (example, _gu.py_) and run it to read it correctly.
+Save the content below in a python file (example, _gu.py_) and run it to read it correctly (`python3 gu.py`).
 
 ```python
 class PrintColor:
