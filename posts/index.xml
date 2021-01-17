@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© Matteo Guadrini</copyright>
-    <lastBuildDate>Sat, 26 Dec 2020 14:54:28 +0100</lastBuildDate>
+    <lastBuildDate>Sun, 17 Jan 2021 12:15:13 +0100</lastBuildDate>
     
 	<atom:link href="https://matteoguadrini.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Linux and Powershell</title>
+      <link>https://matteoguadrini.github.io/posts/linux-and-powershell/</link>
+      <pubDate>Sun, 17 Jan 2021 12:15:13 +0100</pubDate>
+      
+      <guid>https://matteoguadrini.github.io/posts/linux-and-powershell/</guid>
+      <description>What powershell? Powershell is an object-based shell born in Microsoft in 2006, made open source 10 years later. It is characterized by commands, called cmdlets, which respect a certain pattern. An example cmdlet is as follows:
+Get-ChildItem -Path value The pattern in question is Verb-Noun -Option argument, where Verb is a list of verbs. Noun is a description of what impacts the command verb. The Option instead are preceded by a dash and its name; to follow, all the arguments of the option.</description>
+    </item>
     
     <item>
       <title>Containerized Python Development</title>
