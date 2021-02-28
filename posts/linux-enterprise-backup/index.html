@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+  Linux Enterprise Backup &ndash; Matteo Guadrini&#39;s blog
+
+    </title>
+    
+    
+    <meta name="description" property="og:description" content="Why a backup is needed Having a backup system is necessary to ensure continuity to your systems, whatever work they do.
+Backup systems can be simple if few machines are involved or complex in case there are hundreds of thousands of machines, such as in the cloud.
+What to choose If your ecosystem includes a few machines, you will probably want to choose something simple .
+A good and simple backup system is rsync.|This is personal blog of Matteo Guadrini">
+    
+
+    <meta name="apple-mobile-web-app-title" content="Matteo Guadrini&#39;s blog">
+    
+    
+    <link rel="icon" href="/favicon-64.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="mask-icon" size="any" href="/pinned-icon.svg">
+    
+    
+    
+
+
+    <link rel="stylesheet" href="/assets/syntax.css">
+    <link rel="stylesheet" href="/assets/primer-build.css">
+    <link rel="stylesheet" href="/assets/style.css">
+    <link rel="stylesheet" href="/assets/custom_style.css">
+  </head>
+
+
+  <body class="bg-gray">
+    <div id="holy" class="container-lg bg-white h-100">
+
+      <div id="header" class="px-1 bg-white">
+        <nav class="UnderlineNav UnderlineNav--right px-2">
+  <a class="UnderlineNav-actions muted-link h2" href="https://matteoguadrini.github.io">
+    Matteo Guadrini&#39;s blog
+  </a>
+
+  
+  
+  <div class="UnderlineNav-body">
+    
+    
+    
+    <a class="UnderlineNav-item" href="/about/">
+      
+      <span>About</span>
+    </a>
+    
+    
+  </div>
+  
+</nav>
+
+      </div>
+
+      <div role="main" id="main" class="holy-main markdown-body px-4 bg-white">
+        
+
+<div class="Subhead">
+  <div class="Subhead-heading">
+    <div class="h1 mt-3 mb-1">Linux Enterprise Backup</div>
+  </div>
+  <div class="Subhead-description">
+    
+
+
+
+
+
+
+    
+    <div class="float-md-right">
+      <span title="Lastmod: 2021-02-28. Published at: 2021-02-28.">
+        
+          Published: 2021-02-28
+        
+      </span>
+    </div>
+    
+  </div>
+</div>
+<article>
+  
+  <section class="pb-6 mb-3 border-bottom">
+    <p><img src="https://3.bp.blogspot.com/-XZQsY_hZyH4/WX1hlXamzWI/AAAAAAAADVs/tW00X16mGUwgNOK_uPKmIQEEycIdzj9dwCK4BGAYYCw/s1600/how_to_backup_Linux_computer.jpg" alt="Butterfly Backup"></p>
+<h1 id="why-a-backup-is-needed">Why a backup is needed</h1>
+<p>Having a backup system is necessary to ensure continuity to your systems, whatever work they do.</p>
+<p>Backup systems can be simple if few machines are involved or complex in case there are hundreds of thousands of machines, such as in the cloud.</p>
+<h2 id="what-to-choose">What to choose</h2>
+<p>If your ecosystem includes a few machines, you will probably want to choose something <em>simple</em> .</p>
+<p>A good and simple backup system is <strong>rsync</strong>. With <em>rsync</em> you can perform local backups (on external disks) or remote (on other machines on the network).</p>
+<p>For example, it is possible to perform incremental backups in a simple and schedulable way.</p>
+<pre><code class="language-console" data-lang="console">$ rsync -avz /path/of/backup /mnt/bck/		# local backup
+$ rsync -avz /path/of/backup username@remote_host:/bck		# remote backup
+</code></pre><p>However, not all needs have such a simple solution. For example, in some cases, it is also necessary to provide for the restore on a certain precise day.</p>
+<p>In these cases, a more structured backup system is needed, which keeps track of the various backups performed for each machine. One of my favorite tools is <a href="https://rdiff-backup.net/">rdiff-backup</a>. To start, let&rsquo;s make a backup:</p>
+<pre><code class="language-console" data-lang="console">$ rdiff-backup /path/of/backup username@remote_host::/bck
+</code></pre><p>At this point we can specify a restore point.</p>
+<pre><code class="language-console" data-lang="console">$ rdiff-backup -r now username@remote_host::/bck /path/of/backup # restore at the current time
+$ rdiff-backup -r 10D username@remote_host::/bck /path/of/backup # restore at 10 days ago
+</code></pre><p>But what if 10 days ago, you had five backup points? I should go into the <code>increments</code> directory and look at what was backed up in that specific incremental backup. This is frustrating if you have a hundred machines. At this point, a structured backup system is needed; each backup must be able to have a precise restore point.</p>
+<h2 id="butterfly-backup">Butterfly Backup</h2>
+<p><a href="https://github.com/MatteoGuadrini/Butterfly-Backup">Butterfly Backup</a> is a simple rsync wrapper, written in python.</p>
+<p>The concept behind Butterfly Backup is flexibility. Butterfly Backup can be used to make backups to your PC, or to the NAS at home, or to a production storage, or why not, a hundred servers.</p>
+<p>Butterfly Backup also has a <em>catalog</em> system for each backup performed. Each backup has useful information on the single backup, such as a unique identifier (uuid) that allows you to choose (and backup), multiple backups per day, every hour and so on.</p>
+<p>Furthermore, Butterfly Backup has a backup parallelism system. By default, 5 simultaneous bulk backups can be performed, using all CPUs, to optimize backup speed.</p>
+<p>This tool does not need special configurations. The only one, in case you want the clients under backup not to ask for the password, is the exchange of keys in the SSH protocol. In this case, you can use the <code>config</code> options:</p>
+<pre><code class="language-console" data-lang="console">$ bb config --new
+$ bb config --deploy remote_host
+$ bb config --deploy remote_host2 --user root # different user specified
+</code></pre><p>Butterfly Backup has two backup modes: single host or in bulk.
+Depending on your needs, one or the other mode will populate the same <code>catalog</code>.</p>
+<h3 id="backup">Backup</h3>
+<p>To make a <a href="https://butterfly-backup.readthedocs.io/en/latest/#single-backup">single</a> or <a href="https://butterfly-backup.readthedocs.io/en/latest/#bulk-backup">bulk backup</a>, just do the following:</p>
+<pre><code class="language-console" data-lang="console">$ bb backup --computer remote_host --destination /mnt/backup --data User Config --type Unix  # single backup
+$ cat &lt;&lt; EOF &gt; /home/test/bck_list
+remote_host
+remote_host2
+192.168.2.42
+EOF
+$ bb backup --list /home/test/bck_list --destination /mnt/backup --data User Config --type Unix  # bulk backup
+</code></pre><h3 id="a-look-at-the-catalog">A look at the catalog</h3>
+<p>The <em>catalog</em> is available immediately after the first backup. It consists of a file inside the backup folder. The catalog syntax is a simple config file, but the tool provides a clearer interface for <a href="https://butterfly-backup.readthedocs.io/en/latest/#list">consulting backups</a>. First, let&rsquo;s look at what backups are available.</p>
+<pre><code class="language-console" data-lang="console">$ bb list --catalog /mnt/backup
+</code></pre><p>At this point, we can choose a certain backup and look at the details.</p>
+<pre><code class="language-console" data-lang="console">$ bb list --catalog /mnt/backup --backup-id dd6de2f2-9a1e-11e8-82b0-005056a664e0
+</code></pre><p>If we want to go deeper and understand what we have backed up, then we ask for details.</p>
+<pre><code class="language-console" data-lang="console">$ bb list --catalog /mnt/backup --detail dd6de2f2-9a1e-11e8-82b0-005056a664e0
+$ bb list --catalog /mnt/backup --detail dd6de2f2-9a1e-11e8-82b0-005056a664e0 | grep *.pdf  # all pdf files
+</code></pre><h3 id="restore">Restore</h3>
+<p>Butterfly Backup has a <a href="https://butterfly-backup.readthedocs.io/en/latest/#restore">restore system</a> that allows you to recover a single backup point directly on the original client or you can restore the files on another computer.</p>
+<pre><code class="language-console" data-lang="console">$ bb restore --catalog /mnt/backup --backup-id dd6de2f2-9a1e-11e8-82b0-005056a664e0 --computer remote_host
+</code></pre><h3 id="extra-features">Extra features</h3>
+<p>Butterfly Backup also has additional features such as:</p>
+<ul>
+<li>
+<p>backup retention, for days and number of backups</p>
+</li>
+<li>
+<p>export backup on other file system path</p>
+</li>
+<li>
+<p>archive policy, which compresses backups into zip files</p>
+</li>
+<li>
+<p>four backup modes: Incremental, Differential, Full and Mirror</p>
+</li>
+</ul>
+<h2 id="automate-backups">Automate backups</h2>
+<p>An easy way to automate Butterfly Backup is to enter commands in the crontab.</p>
+<pre><code class="language-console" data-lang="console">CMDBB=&quot;bb backup --list /home/test/bck_list --destination /mnt/backup --data User Config --type Unix&quot;
+echo &quot;00 12 * * * $CMDBB&quot; | crontab -
+</code></pre><p>In this way, we have automated every day incremental backups of different clients, servers or other.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Butterfly Backup is a tool created to group all the <strong>rsync</strong> and <strong>rdiff-backup</strong> features, adding parallelism and retention in a single command, removing complexity at the presentation level.</p>
+<p>Furthermore, Butterfly Backup natively has four types of backup modes, which allows it to be versatile on multiple situations, whether it is a backup of our homes or a backup of configurations under <code>/etc</code>.</p>
+<p>In just a few steps, we have implemented an enterprise backup system on a Unix based operating system.</p>
+<p>For more information on this tool, follow the links below:</p>
+<p>WEBSITE: <a href="https://matteoguadrini.github.io/Butterfly-Backup/">Butterfly Backup</a></p>
+<p>GITHUB: <a href="https://github.com/MatteoGuadrini/Butterfly-Backup">Butterfly Backup Github</a></p>
+<p>DOCS: <a href="https://butterfly-backup.readthedocs.io/en/latest/">Read the docs</a></p>
+<p>OPTHER ARTICLE: <a href="https://fedoramagazine.org/butterfly-backup/">Fedora Magazine</a></p>
+
+  </section>
+
+  <section>
+    
+      
+    
+  </section>
+</article>
+
+      </div>
+
+      <div id="side" class="pr-1 bg-white">
+        <aside class="pr-3">
+          
+  
+    <div id="toc" class="Box Box--blue mb-3">
+      <b>Linux Enterprise Backup</b><nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-to-choose">What to choose</a></li>
+    <li><a href="#butterfly-backup">Butterfly Backup</a>
+      <ul>
+        <li><a href="#backup">Backup</a></li>
+        <li><a href="#a-look-at-the-catalog">A look at the catalog</a></li>
+        <li><a href="#restore">Restore</a></li>
+        <li><a href="#extra-features">Extra features</a></li>
+      </ul>
+    </li>
+    <li><a href="#automate-backups">Automate backups</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav></div>
+  
+
+  
+    
+    
+      <div>
+        
+          <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        
+
+        
+          <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button&size=small&mobile_iframe=true&width=61&height=20&appId" width="61" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+        
+
+        
+
+        
+          <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en"></a>
+          <script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
+        
+
+      </div>
+    
+  
+
+        </aside>
+      </div>
+
+      <div id="footer" class="pt-2 pb-3 bg-white text-center">
+        
+
+  <span class="text-small text-gray">
+    © Matteo Guadrini &middot; 
+
+    Powered by the
+    <a href="https://github.com/qqhann/hugo-primer" class="link-gray-dark">Hugo-Primer</a> theme for
+    <a href="https://gohugo.io" class="link-gray-dark">Hugo</a>.
+  </span>
+
+
+      </div>
+    </div>
+
+    
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });</script>
+    
+  </body>
+</html>
