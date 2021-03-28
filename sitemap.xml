@@ -3,17 +3,22 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://matteoguadrini.github.io/posts/linux-enterprise-backup/</loc>
-    <lastmod>2021-02-28T14:17:38+01:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://matteoguadrini.github.io/</loc>
-    <lastmod>2021-02-28T14:17:38+01:00</lastmod>
+    <lastmod>2021-03-28T10:26:28+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://matteoguadrini.github.io/posts/</loc>
+    <lastmod>2021-03-28T10:26:28+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://matteoguadrini.github.io/posts/zen-of-open-source/</loc>
+    <lastmod>2021-03-28T10:26:28+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://matteoguadrini.github.io/posts/linux-enterprise-backup/</loc>
     <lastmod>2021-02-28T14:17:38+01:00</lastmod>
   </url>
   
