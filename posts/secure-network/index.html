@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+  Secure Network &ndash; Matteo Guadrini&#39;s blog
+
+    </title>
+    
+    
+    <meta name="description" property="og:description" content="When can a network be considered more or less secure?
+Tools to protect yourself There are many tools that are used to protect against external intruders: firewall, fail2ban, vmam.
+Firewall In a network the information exchanged can be of various nature and a given node may not always want to allow this information to be visible to all the other nodes in the network or to receive information of any type from the other nodes.|Stories of technology">
+    
+
+    <meta name="apple-mobile-web-app-title" content="Matteo Guadrini&#39;s blog">
+    
+    
+    <link rel="icon" href="/favicon-64.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="mask-icon" size="any" href="/pinned-icon.svg">
+    
+    
+    
+
+
+    <link rel="stylesheet" href="/assets/syntax.css">
+    <link rel="stylesheet" href="/assets/primer-build.css">
+    <link rel="stylesheet" href="/assets/style.css">
+    <link rel="stylesheet" href="/assets/custom_style.css">
+  </head>
+
+
+  <body class="bg-gray">
+    <div id="holy" class="container-lg bg-white h-100">
+
+      <div id="header" class="px-1 bg-white">
+        <nav class="UnderlineNav UnderlineNav--right px-2">
+  <a class="UnderlineNav-actions muted-link h2" href="https://matteoguadrini.github.io">
+    Matteo Guadrini&#39;s blog
+  </a>
+
+  
+  
+  <div class="UnderlineNav-body">
+    
+    
+    
+    <a class="UnderlineNav-item" href="/about/">
+      
+      <span>About</span>
+    </a>
+    
+    
+  </div>
+  
+</nav>
+
+      </div>
+
+      <div role="main" id="main" class="holy-main markdown-body px-4 bg-white">
+        
+
+<div class="Subhead">
+  <div class="Subhead-heading">
+    <div class="h1 mt-3 mb-1">Secure Network</div>
+  </div>
+  <div class="Subhead-description">
+    
+
+
+
+
+
+
+    
+    <div class="float-md-right">
+      <span title="Lastmod: 2021-04-11. Published at: 2021-04-11.">
+        
+          Published: 2021-04-11
+        
+      </span>
+    </div>
+    
+  </div>
+</div>
+<article>
+  
+  <section class="pb-6 mb-3 border-bottom">
+    <p><img src="https://images.idgesg.net/images/article/2018/01/network_security_hacker_virus_crime-100745979-large.jpg" alt="secure-network"></p>
+<p>When can a network be considered more or less secure?</p>
+<h1 id="tools-to-protect-yourself">Tools to protect yourself</h1>
+<p>There are many tools that are used to protect against external intruders: <strong>firewall</strong>, <strong>fail2ban</strong>, <strong>vmam</strong>.</p>
+<h2 id="firewall">Firewall</h2>
+<p>In a network the information exchanged can be of various nature and a given node may not always want to allow this information to be visible to all the other nodes in the network or to receive information of any type from the other nodes.</p>
+<p>The task of the firewall is to filter the information coming and going from a node, establishing what information is accepted by which nodes and what personal information to share with other nodes on the network.</p>
+<p>The main command for configuring your firewall is <code>iptables</code>.</p>
+<pre><code class="language-console" data-lang="console"># iptables -t table command chain rule-specification [options]
+</code></pre><p><em>iptables</em> is very useful if you want to protect your server, but at the level of a network then the rules are starting to get a little too many.</p>
+<p>There are a variety of software that interface or wrap iptables; one of my favorites is <code>ufw</code>.</p>
+<pre><code class="language-console" data-lang="console">$ sudo ufw enable
+$ sudo ufw allow ssh
+$ sudo ufw allow http
+$ sudo ufw allow https
+</code></pre><p>With these simple four commands, I enabled a firewall and three particular ports: 22 (ssh), 80 (http) and 443 (https).</p>
+<p>Another tool that I find very useful for interfacing with iptables is <code>firewall-cmd</code>.</p>
+<p>Once we configured our firewall with our rules, we protected our network from possible attacks. But is that enough? Let&rsquo;s say that one of the servers in my network is a <em>webserver</em> and therefore, we have enabled the <strong>http</strong> and <strong>https</strong> protocol (ports 80 and 443 respectively). How do we spot possible attacks on these ports?</p>
+<h2 id="fail2ban">Fail2ban</h2>
+<p>To protect a webserver, mail, ssh, ftp or directory server from possible attacks on firewall openings, we need to use another type of tool. <code>fail2ban</code> is a very useful tool to automate the protection of our servers.</p>
+<p>Here is a list of the most important features available in Fail2ban:</p>
+<ul>
+<li>client/server</li>
+<li>multithreaded</li>
+<li><a href="https://people.gnome.org/~veillard/gamin/">Gamin</a> support</li>
+<li>autodetection of the date/time format</li>
+<li>wildcard support in logpath option</li>
+<li>support for a lot of services (sshd, apache, qmail, proftpd, sasl, asterisk, etc)</li>
+<li>support for several actions (iptables, tcp-wrapper, shorewall, mail notifications, etc)</li>
+</ul>
+<p>For install fail2ban, follow this:</p>
+<pre><code class="language-console" data-lang="console">$ git clone https://github.com/fail2ban/fail2ban.git
+$ cd fail2ban
+$ sudo python setup.py install 
+$ apt-get install fail2ban 	# debian based installation
+$ yum install fail2ban 		# red hat based installation 
+</code></pre><p>Fail2ban is composed of 2 parts: a client and a server. The server is multi-threaded and listens on a Unix socket for commands. The server itself knows nothing about the configuration files. Thus, at start-up, the server is in a &ldquo;<em>default</em>&rdquo; state in which no jails are defined. <code>fail2ban-server</code> should not be used directly except in case of debugging.</p>
+<p><code>fail2ban-client</code> is the frontend of Fail2ban. It connects to the server socket file and sends commands in order to configure and operate the server. The client can read the configuration files or can simply be used to send a single command to the server using either the command line or the interactive mode.</p>
+<p>For more information, see the <a href="https://www.fail2ban.org/">docs</a>.</p>
+<p>So, now we have protected our network with a firewall, our services with fail2ban. But what if the attacker is in our physical network via LAN or Wi-Fi?</p>
+<h2 id="vmam">vmam</h2>
+<p>To protect against attacks on our network, the only option is to accept who can access our network selectively. For this type of task, we need three things: an LDAP server, a Radius server and a <a href="https://github.com/MatteoGuadrini/vmam">vmam</a> server.</p>
+<p><em>vmam</em> is a server-side application. Work with an open source LDAP server or Active Directory. Basically it creates mac-address users that represent the network card of a machine and associates these users with LDAP groups that represent the various VLANs specified created on their own network architecture (wi-fi, switches, routers, firewalls, etc.), centralized wired and wireless management, with 802.1X support. In addition, based on its configuration, it can also associate computer accounts with this group to allow access to the network by spending the credentials of the computer account.</p>
+<p>The installation of vmam is very simple. With pip:</p>
+<pre><code class="language-console" data-lang="console"># pip install vmam
+</code></pre><p>vmam has two modes: <em>automatic</em> and <em>manual</em>.</p>
+<p>In manual mode, mac-addresses are managed from the command line using the <code>vmam mac</code> command. The mac command has options to add, remove and disable the mac-addresses that can access the network.</p>
+<p>In automatic mode, mac-addresses are managed by contacting LDAP server and taking the last machines (variable in the configuration file) that contacted the LDAP server from N seconds, minutes, hour or days, depending on the needs and policies decided. This mode is activated by launching <code>vmam start</code> on the command line.</p>
+<p>For more details, see the <a href="https://vmam.readthedocs.io/en/latest/index.html">docs</a>.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>In the end, with only three tools, we protected the network, the servers and the services they offer, from remote and even local attackers connected to our network.</p>
+<p>Protecting ourselves effectively not only gives us the ability to expose our services to the outside world, but gives us greater control and awareness of our network.</p>
+
+  </section>
+
+  <section>
+    
+      
+    
+  </section>
+</article>
+
+      </div>
+
+      <div id="side" class="pr-1 bg-white">
+        <aside class="pr-3">
+          
+  
+    <div id="toc" class="Box Box--blue mb-3">
+      <b>Secure Network</b><nav id="TableOfContents">
+  <ul>
+    <li><a href="#firewall">Firewall</a></li>
+    <li><a href="#fail2ban">Fail2ban</a></li>
+    <li><a href="#vmam">vmam</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav></div>
+  
+
+  
+    
+    
+      <div>
+        
+          <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        
+
+        
+          <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button&size=small&mobile_iframe=true&width=61&height=20&appId" width="61" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+        
+
+        
+
+        
+          <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en"></a>
+          <script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
+        
+
+      </div>
+    
+  
+
+        </aside>
+      </div>
+
+      <div id="footer" class="pt-2 pb-3 bg-white text-center">
+        
+
+  <span class="text-small text-gray">
+    © Matteo Guadrini &middot; 
+
+    Powered by the
+    <a href="https://github.com/qqhann/hugo-primer" class="link-gray-dark">Hugo-Primer</a> theme for
+    <a href="https://gohugo.io" class="link-gray-dark">Hugo</a>.
+  </span>
+
+
+      </div>
+    </div>
+
+    
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });</script>
+    
+  </body>
+</html>
