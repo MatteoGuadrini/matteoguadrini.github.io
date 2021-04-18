@@ -7,10 +7,21 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© Matteo Guadrini</copyright>
-    <lastBuildDate>Sun, 11 Apr 2021 12:55:57 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 17 Apr 2021 11:55:43 +0200</lastBuildDate>
     
 	<atom:link href="https://matteoguadrini.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Count the Code</title>
+      <link>https://matteoguadrini.github.io/posts/count-the-code/</link>
+      <pubDate>Sat, 17 Apr 2021 11:55:43 +0200</pubDate>
+      
+      <guid>https://matteoguadrini.github.io/posts/count-the-code/</guid>
+      <description>Measure the execution time Measuring the execution time of a script or program is part of a developer&amp;rsquo;s daily job.
+It is not enough to see if it consumes too much memory or too much CPU. We need to see if the software in its entire life cycle is fast enough.
+This is because the business logic of any software expects a certain task to be completed with a maximum time established by the programmer himself.</description>
+    </item>
     
     <item>
       <title>Secure Network</title>
