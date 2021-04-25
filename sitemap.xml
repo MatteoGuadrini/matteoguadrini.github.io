@@ -3,7 +3,27 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://matteoguadrini.github.io/tags/bash/</loc>
+    <lastmod>2021-04-17T11:55:43+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://matteoguadrini.github.io/categories/</loc>
+    <lastmod>2021-04-17T11:55:43+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://matteoguadrini.github.io/posts/count-the-code/</loc>
+    <lastmod>2021-04-17T11:55:43+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://matteoguadrini.github.io/categories/develop/</loc>
+    <lastmod>2021-04-17T11:55:43+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://matteoguadrini.github.io/categories/devops/</loc>
     <lastmod>2021-04-17T11:55:43+02:00</lastmod>
   </url>
   
@@ -13,8 +33,48 @@
   </url>
   
   <url>
+    <loc>https://matteoguadrini.github.io/tags/go/</loc>
+    <lastmod>2021-04-17T11:55:43+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://matteoguadrini.github.io/tags/java/</loc>
+    <lastmod>2021-04-17T11:55:43+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://matteoguadrini.github.io/tags/javascript/</loc>
+    <lastmod>2021-04-17T11:55:43+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://matteoguadrini.github.io/tags/linux/</loc>
+    <lastmod>2021-04-17T11:55:43+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://matteoguadrini.github.io/posts/</loc>
     <lastmod>2021-04-17T11:55:43+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://matteoguadrini.github.io/tags/python/</loc>
+    <lastmod>2021-04-17T11:55:43+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://matteoguadrini.github.io/tags/</loc>
+    <lastmod>2021-04-17T11:55:43+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://matteoguadrini.github.io/tags/ldap/</loc>
+    <lastmod>2021-04-11T12:55:57+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://matteoguadrini.github.io/categories/network/</loc>
+    <lastmod>2021-04-11T12:55:57+02:00</lastmod>
   </url>
   
   <url>
@@ -23,8 +83,23 @@
   </url>
   
   <url>
+    <loc>https://matteoguadrini.github.io/tags/license/</loc>
+    <lastmod>2021-03-28T10:26:28+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://matteoguadrini.github.io/categories/system/</loc>
+    <lastmod>2021-03-28T10:26:28+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://matteoguadrini.github.io/posts/zen-of-open-source/</loc>
     <lastmod>2021-03-28T10:26:28+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://matteoguadrini.github.io/tags/backup/</loc>
+    <lastmod>2021-02-28T14:17:38+01:00</lastmod>
   </url>
   
   <url>
@@ -33,12 +108,27 @@
   </url>
   
   <url>
+    <loc>https://matteoguadrini.github.io/tags/couchdb/</loc>
+    <lastmod>2021-01-17T12:15:13+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://matteoguadrini.github.io/posts/linux-and-powershell/</loc>
     <lastmod>2021-01-17T12:15:13+01:00</lastmod>
   </url>
   
   <url>
+    <loc>https://matteoguadrini.github.io/tags/powershell/</loc>
+    <lastmod>2021-01-17T12:15:13+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://matteoguadrini.github.io/posts/containerized-python-development/</loc>
+    <lastmod>2020-12-26T14:54:28+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://matteoguadrini.github.io/tags/docker/</loc>
     <lastmod>2020-12-26T14:54:28+01:00</lastmod>
   </url>
   
@@ -50,14 +140,6 @@
   <url>
     <loc>https://matteoguadrini.github.io/posts/simple-is-better-than-complex/</loc>
     <lastmod>2020-12-20T14:56:50+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://matteoguadrini.github.io/categories/</loc>
-  </url>
-  
-  <url>
-    <loc>https://matteoguadrini.github.io/tags/</loc>
   </url>
   
 </urlset>

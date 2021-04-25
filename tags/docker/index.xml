@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>docker on DevOps journey</title>
+    <link>https://matteoguadrini.github.io/tags/docker/</link>
+    <description>Recent content in docker on DevOps journey</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; Matteo Guadrini</copyright>
+    <lastBuildDate>Sat, 26 Dec 2020 14:54:28 +0100</lastBuildDate>
+    
+	<atom:link href="https://matteoguadrini.github.io/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Containerized Python Development</title>
+      <link>https://matteoguadrini.github.io/posts/containerized-python-development/</link>
+      <pubDate>Sat, 26 Dec 2020 14:54:28 +0100</pubDate>
+      
+      <guid>https://matteoguadrini.github.io/posts/containerized-python-development/</guid>
+      <description>Developing python projects When we develop more than one python project, we need to configure our development environment with the dependencies of all the projects. This becomes even more complicated when there are many people on the development of the project. To do this, you need to create a development environment that is isolated from the others. We can do this thanks to docker containers.
+Prepare project Let&amp;rsquo;s imagine that our project has this structure:</description>
+    </item>
+    
+  </channel>
+</rss>
