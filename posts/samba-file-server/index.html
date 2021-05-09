@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+  Samba File Server &ndash; DevOps journey
+
+    </title>
+    
+    <meta content="samba, winbind, kerberos, file-server" name="keywords">
+    
+    
+    <meta name="description" property="og:description" content="Why a file server? One of the most common ways to network Linux and Windows computers is to configure Samba as a File Server. This section covers setting up a Samba server to share files with Windows clients.
+Configure Samba First of all, you have to prepare your machine with everything you need. To do this server, I&amp;rsquo;m using a Fedora 33 server OS. Let&amp;rsquo;s start by installing the packages needed to make our server a Samba file server.|Stories of technology">
+    
+
+    <meta name="apple-mobile-web-app-title" content="DevOps journey">
+    
+    
+    <link rel="icon" href="/favicon-64.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="mask-icon" size="any" href="/pinned-icon.svg">
+    
+    
+    
+
+
+    <link rel="stylesheet" href="/assets/syntax.css">
+    <link rel="stylesheet" href="/assets/primer-build.css">
+    <link rel="stylesheet" href="/assets/style.css">
+    <link rel="stylesheet" href="/assets/custom_style.css">
+  </head>
+
+
+  <body class="bg-gray">
+    <div id="holy" class="container-lg bg-white h-100">
+
+      <div id="header" class="px-1 bg-white">
+        <nav class="UnderlineNav UnderlineNav--right px-2">
+  <a class="UnderlineNav-actions muted-link h2" href="https://matteoguadrini.github.io">
+    DevOps journey
+  </a>
+
+  
+  
+  <div class="UnderlineNav-body">
+    
+    
+    
+    <a class="UnderlineNav-item" href="/about/">
+      
+      <span>About</span>
+    </a>
+    
+    
+  </div>
+  
+</nav>
+
+      </div>
+
+      <div role="main" id="main" class="holy-main markdown-body px-4 bg-white">
+        
+
+<div class="Subhead">
+  <div class="Subhead-heading">
+    <div class="h1 mt-3 mb-1">Samba File Server</div>
+  </div>
+  <div class="Subhead-description">
+    
+
+
+<a href='/categories/system' class="muted-link">
+  <span class="Label Label--gray-darker">system</span>
+</a>
+
+<a href='/categories/devops' class="muted-link">
+  <span class="Label Label--gray-darker">devops</span>
+</a>
+
+
+
+<a href='/tags/bash' class="muted-link">
+  <span class="Label Label--gray">bash</span>
+</a>
+
+<a href='/tags/linux' class="muted-link">
+  <span class="Label Label--gray">linux</span>
+</a>
+
+
+
+    
+    <div class="float-md-right">
+      <span title="Lastmod: 2021-05-02. Published at: 2021-05-02.">
+        
+          Published: 2021-05-02
+        
+      </span>
+    </div>
+    
+  </div>
+</div>
+<article>
+  
+  <section class="pb-6 mb-3 border-bottom">
+    <p><img src="https://teckangaroo.com/wp-content/uploads/2019/02/sambaserverconf.png" alt="samba"></p>
+<h2 id="why-a-file-server">Why a file server?</h2>
+<p>One of the most common ways to network Linux and Windows computers is to configure Samba as a File Server.
+This section covers setting up a Samba server to share files with Windows clients.</p>
+<h2 id="configure-samba">Configure Samba</h2>
+<p>First of all, you have to prepare your machine with everything you need.
+To do this server, I&rsquo;m using a Fedora 33 server OS. Let&rsquo;s start by installing the packages needed to make our server a Samba file server.</p>
+<h3 id="install-requirements">Install requirements</h3>
+<p>The packages needed are <em>Kerberos</em>, <em>Samba</em> and <em>WinBind</em>:</p>
+<pre><code class="language-console" data-lang="console"># dnf install krb5-workstation.x86_64 samba-winbind samba-winbind-clients samba samba-client
+</code></pre><h3 id="configure-kerberos">Configure Kerberos</h3>
+<p>Now let&rsquo;s configure Kerberos with the correct domain, in this case, <em>test.local</em> and its domain controllers:</p>
+<pre><code class="language-console" data-lang="console"># vim /etc/krb5.conf
+</code></pre><div class="highlight"><pre class="chroma"><code class="language-ini" data-lang="ini"><span class="k">[libdefaults]</span>
+    <span class="na">default_realm</span> <span class="o">=</span> <span class="s">TEST.LOCAL</span>
+
+<span class="k">[realms]</span>
+    <span class="na">TEST.LOCAL</span> <span class="o">=</span> <span class="s">{
+</span><span class="s">            kdc = domaincontroller1.test.local
+</span><span class="s">            kdc = domaincontroller2.test.local
+</span><span class="s">            admin_server = domaincontroller1.test.local
+</span><span class="s">        }
+</span><span class="s">             </span>
+<span class="k">[domain_realm]</span>
+    <span class="na">.test.local</span> <span class="o">=</span> <span class="s">TEST.LOCAL
+</span><span class="s">    test.local = TEST.LOCAL</span>
+</code></pre></div><p>Now, test a user credential (my user is <em>arthur</em>):</p>
+<pre><code class="language-console" data-lang="console">$ kinit arthur@TEST.LOCAL
+Password for arthur@TEST.LOCAL:
+$ klist -v
+Credentials cache: API:501:9
+        Principal: arthur@TEST.LOCAL
+    Cache version: 0
+
+Server: krbtgt/TEST.LOCAL@TEST.LOCAL
+Client: arthur@TEST.LOCAL
+Ticket etype: aes128-cts-hmac-sha1-96
+Ticket length: 256
+Auth time:  Apr 30 16:11:36 2021
+End time:   Apr 30 02:11:22 2021
+Renew till: Apr 30 16:11:36 2021
+Ticket flags: pre-authent, initial, renewable, forwardable
+Addresses: addressless
+</code></pre><h3 id="configure-winbind">Configure WinBind</h3>
+<p>Now let&rsquo;s configure Winbind so that you can login with the domain users just configured in kerberos.
+Edit the file below and look for the three lines and replace them with the values described here</p>
+<pre><code class="language-console" data-lang="console"># vim /etc/nsswitch.conf
+</code></pre><div class="highlight"><pre class="chroma"><code class="language-ini" data-lang="ini"><span class="na">...</span>
+<span class="na">passwd:     files winbind</span>
+<span class="na">group:      files winbind</span>
+<span class="na">shadow:     files winbind</span>
+<span class="na">...</span>
+</code></pre></div><h3 id="configure-samba-share">Configure Samba share</h3>
+<p>Once Kerberos is configured to communicate with your domain controllers, let&rsquo;s configure Samba.</p>
+<pre><code class="language-console" data-lang="console"># vim /etc/samba/smb.conf
+</code></pre><div class="highlight"><pre class="chroma"><code class="language-ini" data-lang="ini"><span class="k">[global]</span>
+<span class="c1"># No .tld</span>
+<span class="na">workgroup</span> <span class="o">=</span> <span class="s">TEST</span>
+<span class="c1"># Active Directory System</span>
+<span class="na">security</span> <span class="o">=</span> <span class="s">ads</span>
+<span class="c1"># With .tld</span>
+<span class="na">realm</span> <span class="o">=</span> <span class="s">TEST.LOCAL</span>
+<span class="na">password server</span> <span class="o">=</span> <span class="s">domaincontroller1.test.local</span>
+<span class="na">wins support</span> <span class="o">=</span> <span class="s">yes</span>
+<span class="c1"># Just a member server</span>
+<span class="na">domain master</span> <span class="o">=</span> <span class="s">no</span>
+<span class="na">local master</span> <span class="o">=</span> <span class="s">no</span>
+<span class="na">preferred master</span> <span class="o">=</span> <span class="s">no</span>
+<span class="c1"># Disable printing error log messages when CUPS is not installed.</span>
+<span class="na">printcap name</span> <span class="o">=</span> <span class="s">/etc/printcap</span>
+<span class="na">load printers</span> <span class="o">=</span> <span class="s">no</span>
+<span class="c1"># Works both in samba 3.2 and 3.6.</span>
+<span class="na">idmap backend</span> <span class="o">=</span> <span class="s">tdb</span>
+<span class="na">idmap uid</span> <span class="o">=</span> <span class="s">10000-99999</span>
+<span class="na">idmap gid</span> <span class="o">=</span> <span class="s">10000-99999</span>
+<span class="c1"># no .tld</span>
+<span class="na">idmap config TEST:backend</span> <span class="o">=</span> <span class="s">rid</span>
+<span class="na">idmap config TEST:range</span> <span class="o">=</span> <span class="s">10000-9999</span>
+<span class="na">winbind enum users</span> <span class="o">=</span> <span class="s">yes</span>
+<span class="na">winbind enum groups</span> <span class="o">=</span> <span class="s">yes</span>
+<span class="c1"># This way users log in with username instead of username@example.org</span>
+<span class="na">winbind use default domain</span> <span class="o">=</span> <span class="s">yes</span>
+<span class="c1"># Inherit groups in groups</span>
+<span class="na">winbind nested groups</span> <span class="o">=</span> <span class="s">yes</span>
+<span class="na">winbind refresh tickets</span> <span class="o">=</span> <span class="s">yes</span>
+<span class="na">winbind offline logon</span> <span class="o">=</span> <span class="s">true</span>
+<span class="c1"># Becomes /home/example/username</span>
+<span class="na">template homedir</span> <span class="o">=</span> <span class="s">/home/%D/%U</span>
+<span class="c1"># No shell access</span>
+<span class="na">template shell</span> <span class="o">=</span> <span class="s">/bin/false</span>
+<span class="na">client use spnego</span> <span class="o">=</span> <span class="s">yes</span>
+<span class="na">client ntlmv2 auth</span> <span class="o">=</span> <span class="s">yes</span>
+<span class="na">encrypt passwords</span> <span class="o">=</span> <span class="s">yes</span>
+<span class="na">restrict anonymous</span> <span class="o">=</span> <span class="s">2</span>
+<span class="na">log file</span> <span class="o">=</span> <span class="s">/var/log/samba/samba.log</span>
+<span class="na">log level</span> <span class="o">=</span> <span class="s">2</span>
+
+<span class="c1"># This define a share with samba</span>
+<span class="k">[Shared-Name]</span>
+<span class="na">comment</span> <span class="o">=</span> <span class="s">My shared folder</span>
+<span class="na">path</span> <span class="o">=</span> <span class="s">/shared</span>
+<span class="na">valid users</span> <span class="o">=</span> <span class="s">&#34;@TEST\Shared_Group&#34;</span>
+<span class="na">force group</span> <span class="o">=</span> <span class="s">&#34;shared_group&#34;</span>
+<span class="na">writable</span> <span class="o">=</span> <span class="s">yes</span>
+<span class="na">read only</span> <span class="o">=</span> <span class="s">no</span>
+<span class="na">force create mode</span> <span class="o">=</span> <span class="s">0660</span>
+<span class="na">create mask</span> <span class="o">=</span> <span class="s">0777</span>
+<span class="na">directory mask</span> <span class="o">=</span> <span class="s">0777</span>
+<span class="na">force directory mode</span> <span class="o">=</span> <span class="s">0770</span>
+<span class="na">access based share enum</span> <span class="o">=</span> <span class="s">yes</span>
+<span class="na">hide unreadable</span> <span class="o">=</span> <span class="s">yes</span>
+</code></pre></div><p>Remember to enter users in the <em>TEST\Shared_Group</em> enabled to read and write in our share.</p>
+<h3 id="configure-services">Configure services</h3>
+<p>We enable and start Samba:</p>
+<pre><code class="language-console" data-lang="console"># systemctl start smb nmb winbind
+# systemctl enable smb nmb winbind
+</code></pre><p>Let&rsquo;s join our Linux server with the <em>TEST.LOCAL</em> domain and disable <em>&ldquo;Guests&rdquo;</em> groups to access on our share folder:</p>
+<pre><code class="language-console" data-lang="console"># net -s /dev/null groupmap add sid=S-1-5-32-546 unixgroup=nobody type=builtin
+# net ads join -U administrator
+</code></pre><h2 id="create-the-share">Create the share</h2>
+<p>Finally we can create our share folder named <em>shared</em> and assign it the correct permissions at the share level.</p>
+<pre><code class="language-console" data-lang="console"># mkdir /shared
+# chmod -R 0772 /shared
+# chgrp -R &quot;Domain Users&quot; /shared
+</code></pre><p>Now test the samba share with samba client.</p>
+<pre><code class="language-console" data-lang="console">$ smbclient //localhost/Shared-Name -U arthur%password
+</code></pre><h2 id="configure-nfs">Configure NFS</h2>
+<p>For other Unix machine, is very useful NFS share. Because this, configure it:</p>
+<pre><code class="language-console" data-lang="console"># vim /etc/exports
+</code></pre><div class="highlight"><pre class="chroma"><code class="language-ini" data-lang="ini"><span class="na">/shared 10.10.10.0/24(rw,sync)   # Substitute with your ip address in CIDR notation</span>
+</code></pre></div><p>And enable services</p>
+<pre><code class="language-console" data-lang="console"># systemctl start rpcbind nfs-server
+# systemctl enable rpcbind nfs-server
+</code></pre><h2 id="conclusion">Conclusion</h2>
+<p>Now, all that remains is to connect from a Windows machine (or Linux, why not, with samba client) and write and read files.
+This is a good way to merge two apparently incompatible worlds when it comes to sharing files and folders.</p>
+<p>Another advantage of having a file server on the Unix platform is that you can automate a lot of tasks through scripts created with bash, perl or python. Also, if you could map the same shared folder with samba also with the NFS protocol, a more practical way for Unix platforms.</p>
+<p>In short, this is a good practice for sharing files between different platforms.</p>
+
+  </section>
+
+  <section>
+    
+      
+    
+  </section>
+</article>
+
+      </div>
+
+      <div id="side" class="pr-1 bg-white">
+        <aside class="pr-3">
+          
+  
+    <div id="toc" class="Box Box--blue mb-3">
+      <b>Samba File Server</b><nav id="TableOfContents">
+  <ul>
+    <li><a href="#why-a-file-server">Why a file server?</a></li>
+    <li><a href="#configure-samba">Configure Samba</a>
+      <ul>
+        <li><a href="#install-requirements">Install requirements</a></li>
+        <li><a href="#configure-kerberos">Configure Kerberos</a></li>
+        <li><a href="#configure-winbind">Configure WinBind</a></li>
+        <li><a href="#configure-samba-share">Configure Samba share</a></li>
+        <li><a href="#configure-services">Configure services</a></li>
+      </ul>
+    </li>
+    <li><a href="#create-the-share">Create the share</a></li>
+    <li><a href="#configure-nfs">Configure NFS</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav></div>
+  
+
+  
+    
+    
+      <div>
+        
+          <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        
+
+        
+          <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button&size=small&mobile_iframe=true&width=61&height=20&appId" width="61" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+        
+
+        
+
+        
+          <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en"></a>
+          <script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
+        
+
+      </div>
+    
+  
+
+        </aside>
+      </div>
+
+      <div id="footer" class="pt-2 pb-3 bg-white text-center">
+        
+
+  <span class="text-small text-gray">
+    © Matteo Guadrini &middot; 
+
+    Powered by the
+    <a href="https://github.com/qqhann/hugo-primer" class="link-gray-dark">Hugo-Primer</a> theme for
+    <a href="https://gohugo.io" class="link-gray-dark">Hugo</a>.
+  </span>
+
+
+      </div>
+    </div>
+
+    
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });</script>
+    
+  </body>
+</html>
