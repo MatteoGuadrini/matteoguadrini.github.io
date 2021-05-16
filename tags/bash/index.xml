@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; Matteo Guadrini</copyright>
-    <lastBuildDate>Sun, 02 May 2021 15:31:45 +0200</lastBuildDate><atom:link href="https://matteoguadrini.github.io/tags/bash/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 16 May 2021 11:25:09 +0200</lastBuildDate><atom:link href="https://matteoguadrini.github.io/tags/bash/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Automate Font Preview</title>
+      <link>https://matteoguadrini.github.io/posts/automate-font-preview/</link>
+      <pubDate>Sun, 16 May 2021 11:25:09 +0200</pubDate>
+      
+      <guid>https://matteoguadrini.github.io/posts/automate-font-preview/</guid>
+      <description>In the life of a designer or font maker, the need arises to see how a font looks on a certain image, with a certain color and size, or simply, have a reliable preview of the final result. To do this, graphical tools are required.
+Preview of a font To work with font previews, there are system previewers at the level of any operating system. This is a great starter tool to see what a font will look like on our project.</description>
+    </item>
+    
     <item>
       <title>Samba File Server</title>
       <link>https://matteoguadrini.github.io/posts/samba-file-server/</link>
