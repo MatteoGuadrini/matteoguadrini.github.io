@@ -7,7 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; Matteo Guadrini</copyright>
-    <lastBuildDate>Sun, 16 May 2021 11:25:09 +0200</lastBuildDate><atom:link href="https://matteoguadrini.github.io/categories/system/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 06 Jun 2021 15:44:10 +0200</lastBuildDate><atom:link href="https://matteoguadrini.github.io/categories/system/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tools</title>
+      <link>https://matteoguadrini.github.io/tools/</link>
+      <pubDate>Sun, 06 Jun 2021 15:44:10 +0200</pubDate>
+      
+      <guid>https://matteoguadrini.github.io/tools/</guid>
+      <description>Fedora: Welcome to Freedom Fedora is a Linux kernel based operating system. It offers three editions:
+ Fedora Workstation, for all desktops and laptops Fedora Server, for any server Fedora IoT, for all ARM devices  It is also available in different variations, called spin. At this link you will find all the variants:
+Fedora is a great operating system for operating on operating systems and programming with different languages.</description>
+    </item>
+    
     <item>
       <title>Automate Font Preview</title>
       <link>https://matteoguadrini.github.io/posts/automate-font-preview/</link>
