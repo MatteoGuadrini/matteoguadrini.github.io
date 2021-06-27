@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+  A Switch Story &ndash; DevOps journey
+
+    </title>
+    
+    <meta content="case, switch" name="keywords">
+    
+    
+    <meta name="description" property="og:description" content="What is a switch? The switch is a statement that evaluates the accuracy or similarity of the value of a certain input. But isn&amp;rsquo;t that the same thing that the if statement does? Let&amp;rsquo;s see this statement starting with bash scripting language.
+case EXPRESSION in PATTERN_1) STATEMENTS ;; PATTERN_2) STATEMENTS ;; PATTERN_N) STATEMENTS ;; *) STATEMENTS ;; esac EXPRESSION is an expression (command) or a variable. PATTERN_N, is a value that is expected from EXPRESSION.|">
+    
+
+    <meta name="apple-mobile-web-app-title" content="DevOps journey">
+    
+    
+    <link rel="icon" href="https://matteoguadrini.github.iofavicon-64.png">
+    <link rel="apple-touch-icon" href="https://matteoguadrini.github.ioapple-touch-icon.png">
+    <link rel="mask-icon" size="any" href="https://matteoguadrini.github.iopinned-icon.svg">
+    
+    
+    
+
+
+    <link rel="stylesheet" href="/assets/syntax.css">
+    <link rel="stylesheet" href="/assets/primer-build.css">
+    <link rel="stylesheet" href="/assets/style.css">
+    <link rel="stylesheet" href="/assets/custom_style.css">
+  </head>
+
+
+  <body class="bg-gray">
+    <div id="holy" class="container-lg bg-white h-100">
+
+      <div id="header" class="px-1 bg-white">
+        <nav class="UnderlineNav UnderlineNav--right px-2">
+  <a class="UnderlineNav-actions muted-link h2" href="https://matteoguadrini.github.io">
+    DevOps journey
+  </a>
+
+  
+  
+  <div class="UnderlineNav-body">
+    
+    
+    
+    <a class="UnderlineNav-item" href="/about/">
+      
+      <span>About</span>
+    </a>
+    
+    
+    
+    
+    <a class="UnderlineNav-item" href="/tools/">
+      
+      <span>Tools</span>
+    </a>
+    
+    
+  </div>
+  
+</nav>
+
+      </div>
+
+      <div role="main" id="main" class="holy-main markdown-body px-4 bg-white">
+        
+
+<div class="Subhead">
+  <div class="Subhead-heading">
+    <div class="h1 mt-3 mb-1">A Switch Story</div>
+  </div>
+  <div class="Subhead-description">
+    
+
+
+<a href='/categories/develop' class="muted-link">
+  <span class="Label Label--gray-darker">develop</span>
+</a>
+
+<a href='/categories/devops' class="muted-link">
+  <span class="Label Label--gray-darker">devops</span>
+</a>
+
+
+
+<a href='/tags/python' class="muted-link">
+  <span class="Label Label--gray">python</span>
+</a>
+
+<a href='/tags/bash' class="muted-link">
+  <span class="Label Label--gray">bash</span>
+</a>
+
+<a href='/tags/linux' class="muted-link">
+  <span class="Label Label--gray">linux</span>
+</a>
+
+<a href='/tags/java' class="muted-link">
+  <span class="Label Label--gray">java</span>
+</a>
+
+
+
+    
+    <div class="float-md-right">
+      <span title="Lastmod: 2020-12-23. Published at: 2020-12-23.">
+        
+          Published: 2020-12-23
+        
+      </span>
+    </div>
+    
+  </div>
+</div>
+<article>
+  
+  <section class="pb-6 mb-3 border-bottom">
+    <p><img src="https://techaid24.com/wp-content/uploads/2020/09/Switch-Case-In-Python.jpg" alt="Python Switch Case"></p>
+<h1 id="what-is-a-switch">What is a switch?</h1>
+<p>The <em>switch</em> is a statement that evaluates the accuracy or similarity of the value of a certain input.
+But isn&rsquo;t that the same thing that the <em>if</em> statement does?
+Let&rsquo;s see this statement starting with <strong>bash</strong> scripting language.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="k">case</span> EXPRESSION in
+
+  PATTERN_1<span class="o">)</span>
+    STATEMENTS
+    <span class="p">;;</span>
+
+  PATTERN_2<span class="o">)</span>
+    STATEMENTS
+    <span class="p">;;</span>
+
+  PATTERN_N<span class="o">)</span>
+    STATEMENTS
+    <span class="p">;;</span>
+
+  *<span class="o">)</span>
+    STATEMENTS
+    <span class="p">;;</span>
+<span class="k">esac</span>
+</code></pre></div><p><em>EXPRESSION</em> is an expression (command) or a variable. <em>PATTERN_N</em>, is a value that is expected from <em>EXPRESSION</em>. <em>*</em> is default value.</p>
+<p>So given an <strong>EXPRESSION</strong>, I evaluate the <strong>PATTERN</strong> cases and if they don&rsquo;t fit into the latter, the default <strong>*</strong> comes into play. Simple. Let&rsquo;s see her at work.</p>
+<h2 id="switch-work">Switch, work!</h2>
+<p>Which fruit do you want?</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">echo</span> -n <span class="s2">&#34;Enter the name of a fruit &#34;</span>
+<span class="nb">read</span> FRUIT
+
+<span class="nb">echo</span> -n <span class="s2">&#34;The </span><span class="nv">$FRUIT</span><span class="s2"> is &#34;</span>
+
+<span class="k">case</span> <span class="nv">$FRUIT</span> in
+
+  apple<span class="o">)</span>
+    <span class="nb">echo</span> -n <span class="s2">&#34;apple&#34;</span>
+    <span class="p">;;</span>
+
+  banana<span class="o">)</span>
+    <span class="nb">echo</span> -n <span class="s2">&#34;banana&#34;</span>
+    <span class="p">;;</span>
+
+  blueberries <span class="p">|</span> raspberries <span class="p">|</span> <span class="s2">&#34;blue currant&#34;</span> <span class="p">|</span> currant<span class="o">)</span>
+    <span class="nb">echo</span> -n <span class="s2">&#34;berries&#34;</span>
+    <span class="p">;;</span>
+
+  *<span class="o">)</span>
+    <span class="nb">echo</span> -n <span class="s2">&#34;unknown&#34;</span>
+    <span class="p">;;</span>
+<span class="k">esac</span>
+</code></pre></div><p>In bash everything is very simple and clear. Let&rsquo;s see what happens in other languages.</p>
+<h2 id="switch-in-other-languages">Switch in other languages</h2>
+<p>In other languages such as Java and .NET C#, the switch case is a bit more complicated. However, compared to the simplicity of the bash case, the purpose is clear.
+An example in <strong>Java</strong>.</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">FruitSelector</span>  
+<span class="o">{</span> 
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> 
+    <span class="o">{</span> 
+        <span class="n">String</span> <span class="n">fruit</span> <span class="o">=</span> <span class="s">&#34;banana&#34;</span><span class="o">;</span>
+
+        <span class="k">switch</span><span class="o">(</span><span class="n">fruit</span><span class="o">)</span> 
+        <span class="o">{</span> 
+            <span class="k">case</span> <span class="s">&#34;apple&#34;</span><span class="o">:</span> 
+                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;The fruit is apple&#34;</span><span class="o">);</span> 
+                <span class="k">break</span><span class="o">;</span> 
+            <span class="k">case</span> <span class="s">&#34;banana&#34;</span><span class="o">:</span> 
+                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;The fruit is banana&#34;</span><span class="o">);</span> 
+                <span class="k">break</span><span class="o">;</span> 
+            <span class="k">case</span> <span class="s">&#34;blueberries&#34;</span><span class="o">:</span>
+            <span class="k">case</span> <span class="s">&#34;raspberries&#34;</span><span class="o">:</span>
+            <span class="k">case</span> <span class="s">&#34;blue currant&#34;</span><span class="o">:</span>
+            <span class="k">case</span> <span class="s">&#34;currant&#34;</span><span class="o">:</span>
+                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;The fruit is berries&#34;</span><span class="o">);</span> 
+                <span class="k">break</span><span class="o">;</span> 
+            <span class="k">default</span><span class="o">:</span> 
+                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;The fruit is unknown&#34;</span><span class="o">);</span> 
+        <span class="o">}</span> 
+    <span class="o">}</span> 
+<span class="o">}</span> 
+</code></pre></div><p>And one in <strong>C#</strong>.</p>
+<div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">FruitSelector</span>
+<span class="p">{</span>
+   <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="n">Main</span><span class="p">()</span>
+   <span class="p">{</span>
+      <span class="kt">string</span> <span class="n">fruit</span> <span class="p">=</span> <span class="s">&#34;banana&#34;</span><span class="p">;</span>
+
+      <span class="k">switch</span> <span class="p">(</span><span class="n">caseSwitch</span><span class="p">)</span>
+      <span class="p">{</span>
+          <span class="k">case</span> <span class="s">&#34;apple&#34;</span><span class="p">:</span>
+              <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;The fruit is apple&#34;</span><span class="p">);</span> 
+              <span class="k">break</span><span class="p">;</span>
+          <span class="k">case</span> <span class="s">&#34;banana&#34;</span><span class="p">:</span> 
+              <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;The fruit is banana&#34;</span><span class="p">);</span> 
+              <span class="k">break</span><span class="p">;</span>
+          <span class="k">case</span> <span class="s">&#34;blueberries&#34;</span><span class="p">:</span>
+          <span class="k">case</span> <span class="s">&#34;raspberries&#34;</span><span class="p">:</span>
+          <span class="k">case</span> <span class="s">&#34;blue currant&#34;</span><span class="p">:</span>
+          <span class="k">case</span> <span class="s">&#34;currant&#34;</span><span class="p">:</span>
+              <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;The fruit is berries&#34;</span><span class="p">);</span>
+              <span class="k">break</span><span class="p">;</span>
+          <span class="k">default</span><span class="p">:</span>
+              <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;The fruit is unknown&#34;</span><span class="p">);</span>
+              <span class="k">break</span><span class="p">;</span>
+      <span class="p">}</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p>They are very similar. We built a fruit selector, like the one in bash.</p>
+<h2 id="but-in-python">But in python?</h2>
+<p>Python does not have any <em>switch</em> statements.
+A <a href="https://www.python.org/dev/peps/pep-3103/">PEP 3103</a> has been evaluated and created, but the conclusion is:</p>
+<blockquote>
+<p>In the mean time, Python is fine without a switch statement, and perhaps those who claim it would be a mistake to add one are right.</p>
+</blockquote>
+<p>As I was reflecting above, the switch case is very similar to the if statement.
+An early form of switch in python could be given by <strong>if/elif/else</strong> statements.</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">fruit</span> <span class="o">=</span> <span class="s2">&#34;banana&#34;</span>
+<span class="k">if</span> <span class="n">fruit</span> <span class="o">==</span> <span class="s2">&#34;apple&#34;</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&#34;The fruit is apple&#34;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">fruit</span> <span class="o">==</span> <span class="s2">&#34;banana&#34;</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&#34;The fruit is banana&#34;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">fruit</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&#34;blueberries&#34;</span><span class="p">,</span> <span class="s2">&#34;raspberries&#34;</span><span class="p">,</span> <span class="s2">&#34;blue currant&#34;</span><span class="p">,</span> <span class="s2">&#34;currant&#34;</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&#34;The fruit is berries&#34;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&#34;The fruit is unknown&#34;</span><span class="p">)</span>
+</code></pre></div><p>This is simple to both read and understand. But it&rsquo;s still not a switch statement. The switch evaluates the accuracy but also the similarity of a word.
+There is an object in python which acts as a selector. Not for nothing have the two classes written in Java and C# above called &ldquo;<em>Selector</em>&rdquo;.</p>
+<p>A selector evaluates an <strong>EXPRESSION</strong>, takes its value and checks the accuracy of the <strong>PATTERN</strong>, otherwise, it returns a default value (<strong>*</strong>).
+The dictionary object is a kind of selector:</p>
+<blockquote>
+<p>A mapping object maps hashable values to arbitrary objects. Mappings are mutable objects. There is currently only one standard mapping type, the dictionary.</p>
+</blockquote>
+<p>Being based on hash indexes, it is much faster in retrieving values. Let&rsquo;s try to create our selector.</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">myfruit</span> <span class="o">=</span> <span class="s2">&#34;banana&#34;</span>
+<span class="n">fruits</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&#34;apple&#34;</span><span class="p">:</span> <span class="s2">&#34;The fruit is apple&#34;</span><span class="p">,</span>
+    <span class="s2">&#34;banana&#34;</span><span class="p">:</span> <span class="s2">&#34;The fruit is banana&#34;</span><span class="p">,</span>
+    <span class="s2">&#34;blueberries&#34;</span><span class="p">:</span> <span class="s2">&#34;The fruit is berries&#34;</span><span class="p">,</span>
+    <span class="s2">&#34;raspberries&#34;</span><span class="p">:</span> <span class="s2">&#34;The fruit is berries&#34;</span><span class="p">,</span>
+    <span class="s2">&#34;blue currant&#34;</span><span class="p">:</span> <span class="s2">&#34;The fruit is berries&#34;</span><span class="p">,</span>
+    <span class="s2">&#34;currant&#34;</span><span class="p">:</span> <span class="s2">&#34;The fruit is berries&#34;</span>
+<span class="p">}</span>
+<span class="k">print</span><span class="p">(</span><span class="n">fruits</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">myfruit</span><span class="p">,</span> <span class="s2">&#34;The fruit is unknown&#34;</span><span class="p">))</span>
+</code></pre></div><p>In this way, we made our switch selector, beautiful and &ldquo;<em>pythonic</em>&rdquo;. But still, the exactness but also the similarity of a word is not evaluated.</p>
+<h2 id="can-it-be-improved">Can it be improved?</h2>
+<p>Yes, of course!
+Let&rsquo;s now create a function that will act as a selector, as we&rsquo;ve seen done in Java and C#.
+There is a python builtin that applies filters. The function is called <em>filter</em>. Apply a function to an iterable. Functions such as terables are python objects and can be assigned as arguments to other functions. Also, our fruit selector (dictionary) is an iterable. We just need a function that evaluates the similarity of the keys.</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">FruitSelector</span><span class="p">(</span><span class="n">fruit</span><span class="p">):</span>
+    <span class="n">fruits</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&#34;apple&#34;</span><span class="p">:</span> <span class="s2">&#34;The fruit is apple&#34;</span><span class="p">,</span>
+        <span class="s2">&#34;banana&#34;</span><span class="p">:</span> <span class="s2">&#34;The fruit is banana&#34;</span><span class="p">,</span>
+        <span class="s2">&#34;blueberries&#34;</span><span class="p">:</span> <span class="s2">&#34;The fruit is berries&#34;</span><span class="p">,</span>
+        <span class="s2">&#34;raspberries&#34;</span><span class="p">:</span> <span class="s2">&#34;The fruit is berries&#34;</span><span class="p">,</span>
+        <span class="s2">&#34;blue currant&#34;</span><span class="p">:</span> <span class="s2">&#34;The fruit is berries&#34;</span><span class="p">,</span>
+        <span class="s2">&#34;currant&#34;</span><span class="p">:</span> <span class="s2">&#34;The fruit is berries&#34;</span><span class="p">,</span>
+        <span class="s2">&#34;default&#34;</span><span class="p">:</span> <span class="s2">&#34;The fruit is unknown&#34;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">key</span><span class="p">:</span> <span class="n">fruit</span> <span class="ow">in</span> <span class="n">key</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">fruits</span><span class="o">.</span><span class="n">items</span><span class="p">()))</span>
+
+<span class="n">FruitSelector</span><span class="p">(</span><span class="s1">&#39;banana&#39;</span><span class="p">)</span>
+<span class="n">FruitSelector</span><span class="p">(</span><span class="s1">&#39;anana&#39;</span><span class="p">)</span>
+</code></pre></div><p>In python, methods of classes and functions are objects of type <em>Callable</em>. Being objects, information can be stored in them.
+We will transform our selector into a switch, with an added value: the cache of the last selected fruit.
+In python everything is an object and therefore can be treated as such.
+If we wanted to abstract our selector even more to make it become a switch in effect, that&rsquo;s it:</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">switch</span><span class="p">(</span><span class="n">match</span><span class="p">,</span> <span class="n">dictionary</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&#34;no match&#34;</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">match</span> <span class="ow">in</span> <span class="n">key</span><span class="p">:</span>
+            <span class="n">switch</span><span class="o">.</span><span class="n">last_match</span> <span class="o">=</span> <span class="n">key</span>
+            <span class="k">return</span> <span class="n">dictionary</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">default</span>
+
+<span class="n">fruits</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&#34;apple&#34;</span><span class="p">:</span> <span class="s2">&#34;The fruit is apple&#34;</span><span class="p">,</span>
+    <span class="s2">&#34;banana&#34;</span><span class="p">:</span> <span class="s2">&#34;The fruit is banana&#34;</span><span class="p">,</span>
+    <span class="s2">&#34;blueberries&#34;</span><span class="p">:</span> <span class="s2">&#34;The fruit is berries&#34;</span><span class="p">,</span>
+    <span class="s2">&#34;raspberries&#34;</span><span class="p">:</span> <span class="s2">&#34;The fruit is berries&#34;</span><span class="p">,</span>
+    <span class="s2">&#34;blue currant&#34;</span><span class="p">:</span> <span class="s2">&#34;The fruit is berries&#34;</span><span class="p">,</span>
+    <span class="s2">&#34;currant&#34;</span><span class="p">:</span> <span class="s2">&#34;The fruit is berries&#34;</span>
+<span class="p">}</span>
+
+<span class="n">switch</span><span class="p">(</span><span class="s1">&#39;banana&#39;</span><span class="p">,</span> <span class="n">fruits</span><span class="p">)</span>
+<span class="n">switch</span><span class="p">(</span><span class="s1">&#39;anana&#39;</span><span class="p">,</span> <span class="n">fruits</span><span class="p">)</span>
+<span class="n">switch</span><span class="p">(</span><span class="n">switch</span><span class="o">.</span><span class="n">last_match</span><span class="p">,</span> <span class="n">fruits</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&#34;The fruit is unknown&#34;</span><span class="p">)</span>
+</code></pre></div><h2 id="a-callable-switch">A callable switch</h2>
+<p>Also, since functions in python are objects, it is possible to replace string values of the dictionary with functions and return them if the keys match, in this way, can be called. A very simple example.
+In effect, that&rsquo;s it:</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">switch</span><span class="p">(</span><span class="n">match</span><span class="p">,</span> <span class="n">dictionary</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&#34;no match&#34;</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">match</span> <span class="ow">in</span> <span class="n">key</span><span class="p">:</span>
+            <span class="n">switch</span><span class="o">.</span><span class="n">last_match</span> <span class="o">=</span> <span class="n">key</span>
+            <span class="k">return</span> <span class="n">dictionary</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">default</span>
+
+<span class="n">calc</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&#34;plus&#34;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">,</span>
+    <span class="s2">&#34;minus&#34;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span> <span class="o">-</span> <span class="n">y</span>
+<span class="p">}</span>
+
+<span class="n">plus</span> <span class="o">=</span> <span class="n">switch</span><span class="p">(</span><span class="s1">&#39;plus&#39;</span><span class="p">,</span> <span class="n">calc</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&#34;unintended function&#34;</span><span class="p">)</span>
+<span class="n">minus</span> <span class="o">=</span> <span class="n">switch</span><span class="p">(</span><span class="s1">&#39;minus&#39;</span><span class="p">,</span> <span class="n">calc</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&#34;unintended function&#34;</span><span class="p">)</span>
+
+<span class="n">plus</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">minus</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+</code></pre></div><h2 id="conclusion">Conclusion</h2>
+<p>In fact, <strong>python</strong> doesn&rsquo;t need a switch statement. Do other programming languages really need it? I believe that in simple languages like <strong>bash</strong>, there is a real need for this construct. In <strong>Java</strong> you could do the same thing I did in python via a map object and same thing in <strong>C#</strong>. Finally, I agree with the conclusions of PEP 3103: <em>&ldquo;In the mean time, Python is fine without a switch statement, and perhaps those who claim it would be a mistake to add one are right.&quot;</em></p>
+
+  </section>
+
+  <section>
+    
+      
+    
+  </section>
+</article>
+
+      </div>
+
+      <div id="side" class="pr-1 bg-white">
+        <aside class="pr-3">
+          
+  
+    <div id="toc" class="Box Box--blue mb-3">
+      <b>A Switch Story</b><nav id="TableOfContents">
+  <ul>
+    <li><a href="#switch-work">Switch, work!</a></li>
+    <li><a href="#switch-in-other-languages">Switch in other languages</a></li>
+    <li><a href="#but-in-python">But in python?</a></li>
+    <li><a href="#can-it-be-improved">Can it be improved?</a></li>
+    <li><a href="#a-callable-switch">A callable switch</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav></div>
+  
+
+  
+    
+    
+      <div>
+        
+          <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        
+
+        
+          <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button&size=small&mobile_iframe=true&width=61&height=20&appId" width="61" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+        
+
+        
+
+        
+          <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en"></a>
+          <script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
+        
+
+      </div>
+    
+  
+
+        </aside>
+      </div>
+
+      <div id="footer" class="pt-2 pb-3 bg-white text-center">
+        
+
+  <span class="text-small text-gray">
+    © Matteo Guadrini &middot; 
+
+    Powered by the
+    <a href="https://github.com/qqhann/hugo-primer" class="link-gray-dark">Hugo-Primer</a> theme for
+    <a href="https://gohugo.io" class="link-gray-dark">Hugo</a>.
+  </span>
+
+
+      </div>
+    </div>
+
+    
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });</script>
+    
+  </body>
+</html>

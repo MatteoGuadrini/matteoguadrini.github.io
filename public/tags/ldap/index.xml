@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ldap on DevOps journey</title>
+    <link>https://matteoguadrini.github.io/tags/ldap/</link>
+    <description>Recent content in ldap on DevOps journey</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; Matteo Guadrini</copyright>
+    <lastBuildDate>Sun, 11 Apr 2021 12:55:57 +0200</lastBuildDate><atom:link href="https://matteoguadrini.github.io/tags/ldap/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Secure Network</title>
+      <link>https://matteoguadrini.github.io/posts/secure-network/</link>
+      <pubDate>Sun, 11 Apr 2021 12:55:57 +0200</pubDate>
+      
+      <guid>https://matteoguadrini.github.io/posts/secure-network/</guid>
+      <description>When can a network be considered more or less secure?
+Tools to protect yourself There are many tools that are used to protect against external intruders: firewall, fail2ban, vmam.
+Firewall In a network the information exchanged can be of various nature and a given node may not always want to allow this information to be visible to all the other nodes in the network or to receive information of any type from the other nodes.</description>
+    </item>
+    
+  </channel>
+</rss>

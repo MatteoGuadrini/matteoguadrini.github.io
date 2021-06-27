@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>devops on DevOps journey</title>
+    <link>https://matteoguadrini.github.io/categories/devops/</link>
+    <description>Recent content in devops on DevOps journey</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; Matteo Guadrini</copyright>
+    <lastBuildDate>Sun, 06 Jun 2021 15:44:10 +0200</lastBuildDate><atom:link href="https://matteoguadrini.github.io/categories/devops/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tools</title>
+      <link>https://matteoguadrini.github.io/tools/</link>
+      <pubDate>Sun, 06 Jun 2021 15:44:10 +0200</pubDate>
+      
+      <guid>https://matteoguadrini.github.io/tools/</guid>
+      <description>In this section you will find the tools, utilities and editors or IDE that I use daily for my work, my hobbies and my open source projects, which you can find on my Github page.
+Fedora: Welcome to Freedom Fedora is a Linux kernel based operating system. It offers three editions:
+ Fedora Workstation, for all desktops and laptops Fedora Server, for any server Fedora IoT, for all ARM devices  It is also available in different variations, called spin.</description>
+    </item>
+    
+    <item>
+      <title>Automate Font Preview</title>
+      <link>https://matteoguadrini.github.io/posts/automate-font-preview/</link>
+      <pubDate>Sun, 16 May 2021 11:25:09 +0200</pubDate>
+      
+      <guid>https://matteoguadrini.github.io/posts/automate-font-preview/</guid>
+      <description>In the life of a designer or font maker, the need arises to see how a font looks on a certain image, with a certain color and size, or simply, have a reliable preview of the final result. To do this, graphical tools are required.
+Preview of a font To work with font previews, there are system previewers at the level of any operating system. This is a great starter tool to see what a font will look like on our project.</description>
+    </item>
+    
+    <item>
+      <title>Samba File Server</title>
+      <link>https://matteoguadrini.github.io/posts/samba-file-server/</link>
+      <pubDate>Sun, 02 May 2021 15:31:45 +0200</pubDate>
+      
+      <guid>https://matteoguadrini.github.io/posts/samba-file-server/</guid>
+      <description>Why a file server? One of the most common ways to network Linux and Windows computers is to configure Samba as a File Server. This section covers setting up a Samba server to share files with Windows clients.
+Configure Samba First of all, you have to prepare your machine with everything you need. To do this server, I&amp;rsquo;m using a Fedora 33 server OS. Let&amp;rsquo;s start by installing the packages needed to make our server a Samba file server.</description>
+    </item>
+    
+    <item>
+      <title>Count the Code</title>
+      <link>https://matteoguadrini.github.io/posts/count-the-code/</link>
+      <pubDate>Sat, 17 Apr 2021 11:55:43 +0200</pubDate>
+      
+      <guid>https://matteoguadrini.github.io/posts/count-the-code/</guid>
+      <description>Measure the execution time Measuring the execution time of a script or program is part of a developer&amp;rsquo;s daily job.
+It is not enough to see if it consumes too much memory or too much CPU. We need to see if the software in its entire life cycle is fast enough.
+This is because the business logic of any software expects a certain task to be completed with a maximum time established by the programmer himself.</description>
+    </item>
+    
+    <item>
+      <title>Secure Network</title>
+      <link>https://matteoguadrini.github.io/posts/secure-network/</link>
+      <pubDate>Sun, 11 Apr 2021 12:55:57 +0200</pubDate>
+      
+      <guid>https://matteoguadrini.github.io/posts/secure-network/</guid>
+      <description>When can a network be considered more or less secure?
+Tools to protect yourself There are many tools that are used to protect against external intruders: firewall, fail2ban, vmam.
+Firewall In a network the information exchanged can be of various nature and a given node may not always want to allow this information to be visible to all the other nodes in the network or to receive information of any type from the other nodes.</description>
+    </item>
+    
+    <item>
+      <title>Zen of Open Source</title>
+      <link>https://matteoguadrini.github.io/posts/zen-of-open-source/</link>
+      <pubDate>Sun, 28 Mar 2021 10:26:28 +0100</pubDate>
+      
+      <guid>https://matteoguadrini.github.io/posts/zen-of-open-source/</guid>
+      <description>Open philosophy When can a project be defined as open-source? When, as the word says, you open the source code and make it available to other people.
+Of course, this is the first concept behind the open-source philosophy. But there is more.
+Open source license To make a project open-source first, you need to release it with a certain license. In fact, there are a lot of them. They all share the main philosophy, but differ from each other in small points.</description>
+    </item>
+    
+    <item>
+      <title>Linux Enterprise Backup</title>
+      <link>https://matteoguadrini.github.io/posts/linux-enterprise-backup/</link>
+      <pubDate>Sun, 28 Feb 2021 14:17:38 +0100</pubDate>
+      
+      <guid>https://matteoguadrini.github.io/posts/linux-enterprise-backup/</guid>
+      <description>Why a backup is needed Having a backup system is necessary to ensure continuity to your systems, whatever work they do.
+Backup systems can be simple if few machines are involved or complex in case there are hundreds of thousands of machines, such as in the cloud.
+What to choose If your ecosystem includes a few machines, you will probably want to choose something simple .
+A good and simple backup system is rsync.</description>
+    </item>
+    
+    <item>
+      <title>Linux and Powershell</title>
+      <link>https://matteoguadrini.github.io/posts/linux-and-powershell/</link>
+      <pubDate>Sun, 17 Jan 2021 12:15:13 +0100</pubDate>
+      
+      <guid>https://matteoguadrini.github.io/posts/linux-and-powershell/</guid>
+      <description>What powershell? Powershell is an object-based shell born in Microsoft in 2006, made open source 10 years later. It is characterized by commands, called cmdlets, which respect a certain pattern. An example cmdlet is as follows:
+Get-ChildItem -Path value The pattern in question is Verb-Noun -Option argument, where Verb is a list of verbs. Noun is a description of what impacts the command verb. The Option instead are preceded by a dash and its name; to follow, all the arguments of the option.</description>
+    </item>
+    
+    <item>
+      <title>Containerized Python Development</title>
+      <link>https://matteoguadrini.github.io/posts/containerized-python-development/</link>
+      <pubDate>Sat, 26 Dec 2020 14:54:28 +0100</pubDate>
+      
+      <guid>https://matteoguadrini.github.io/posts/containerized-python-development/</guid>
+      <description>Developing python projects When we develop more than one python project, we need to configure our development environment with the dependencies of all the projects. This becomes even more complicated when there are many people on the development of the project. To do this, you need to create a development environment that is isolated from the others. We can do this thanks to docker containers.
+Prepare project Let&amp;rsquo;s imagine that our project has this structure:</description>
+    </item>
+    
+    <item>
+      <title>A Switch Story</title>
+      <link>https://matteoguadrini.github.io/posts/a-switch-story/</link>
+      <pubDate>Wed, 23 Dec 2020 15:40:01 +0100</pubDate>
+      
+      <guid>https://matteoguadrini.github.io/posts/a-switch-story/</guid>
+      <description>What is a switch? The switch is a statement that evaluates the accuracy or similarity of the value of a certain input. But isn&amp;rsquo;t that the same thing that the if statement does? Let&amp;rsquo;s see this statement starting with bash scripting language.
+case EXPRESSION in PATTERN_1) STATEMENTS ;; PATTERN_2) STATEMENTS ;; PATTERN_N) STATEMENTS ;; *) STATEMENTS ;; esac EXPRESSION is an expression (command) or a variable. PATTERN_N, is a value that is expected from EXPRESSION.</description>
+    </item>
+    
+    <item>
+      <title>Simple Is Better Than Complex</title>
+      <link>https://matteoguadrini.github.io/posts/simple-is-better-than-complex/</link>
+      <pubDate>Sun, 20 Dec 2020 14:56:50 +0100</pubDate>
+      
+      <guid>https://matteoguadrini.github.io/posts/simple-is-better-than-complex/</guid>
+      <description>&amp;hellip;and complex is better than complicated.
+This has always been my motto. All my lines of code have simplicity as their primary goal.
+I decided to start this blog, to tell about my IT adventures, to describe all my projects and experiences, so that they can help others.
+Open Source To apply my motto, one of the principles that drives all my works, is the open source philosophy. Each of my projects is open source.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on DevOps journey</title>
+    <link>https://matteoguadrini.github.io/tags/</link>
+    <description>Recent content in Tags on DevOps journey</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; Matteo Guadrini</copyright>
+    <lastBuildDate>Sun, 06 Jun 2021 15:44:10 +0200</lastBuildDate><atom:link href="https://matteoguadrini.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>linux</title>
+      <link>https://matteoguadrini.github.io/tags/linux/</link>
+      <pubDate>Sun, 06 Jun 2021 15:44:10 +0200</pubDate>
+      
+      <guid>https://matteoguadrini.github.io/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python</title>
+      <link>https://matteoguadrini.github.io/tags/python/</link>
+      <pubDate>Sun, 06 Jun 2021 15:44:10 +0200</pubDate>
+      
+      <guid>https://matteoguadrini.github.io/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>bash</title>
+      <link>https://matteoguadrini.github.io/tags/bash/</link>
+      <pubDate>Sun, 16 May 2021 11:25:09 +0200</pubDate>
+      
+      <guid>https://matteoguadrini.github.io/tags/bash/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>design</title>
+      <link>https://matteoguadrini.github.io/tags/design/</link>
+      <pubDate>Sun, 16 May 2021 11:25:09 +0200</pubDate>
+      
+      <guid>https://matteoguadrini.github.io/tags/design/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>font</title>
+      <link>https://matteoguadrini.github.io/tags/font/</link>
+      <pubDate>Sun, 16 May 2021 11:25:09 +0200</pubDate>
+      
+      <guid>https://matteoguadrini.github.io/tags/font/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>go</title>
+      <link>https://matteoguadrini.github.io/tags/go/</link>
+      <pubDate>Sat, 17 Apr 2021 11:55:43 +0200</pubDate>
+      
+      <guid>https://matteoguadrini.github.io/tags/go/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>java</title>
+      <link>https://matteoguadrini.github.io/tags/java/</link>
+      <pubDate>Sat, 17 Apr 2021 11:55:43 +0200</pubDate>
+      
+      <guid>https://matteoguadrini.github.io/tags/java/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>javascript</title>
+      <link>https://matteoguadrini.github.io/tags/javascript/</link>
+      <pubDate>Sat, 17 Apr 2021 11:55:43 +0200</pubDate>
+      
+      <guid>https://matteoguadrini.github.io/tags/javascript/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ldap</title>
+      <link>https://matteoguadrini.github.io/tags/ldap/</link>
+      <pubDate>Sun, 11 Apr 2021 12:55:57 +0200</pubDate>
+      
+      <guid>https://matteoguadrini.github.io/tags/ldap/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>license</title>
+      <link>https://matteoguadrini.github.io/tags/license/</link>
+      <pubDate>Sun, 28 Mar 2021 10:26:28 +0100</pubDate>
+      
+      <guid>https://matteoguadrini.github.io/tags/license/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>backup</title>
+      <link>https://matteoguadrini.github.io/tags/backup/</link>
+      <pubDate>Sun, 28 Feb 2021 14:17:38 +0100</pubDate>
+      
+      <guid>https://matteoguadrini.github.io/tags/backup/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>couchdb</title>
+      <link>https://matteoguadrini.github.io/tags/couchdb/</link>
+      <pubDate>Sun, 17 Jan 2021 12:15:13 +0100</pubDate>
+      
+      <guid>https://matteoguadrini.github.io/tags/couchdb/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>powershell</title>
+      <link>https://matteoguadrini.github.io/tags/powershell/</link>
+      <pubDate>Sun, 17 Jan 2021 12:15:13 +0100</pubDate>
+      
+      <guid>https://matteoguadrini.github.io/tags/powershell/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>docker</title>
+      <link>https://matteoguadrini.github.io/tags/docker/</link>
+      <pubDate>Sat, 26 Dec 2020 14:54:28 +0100</pubDate>
+      
+      <guid>https://matteoguadrini.github.io/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

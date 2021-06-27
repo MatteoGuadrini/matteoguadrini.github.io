@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tools on DevOps journey</title>
+    <link>https://matteoguadrini.github.io/tools/</link>
+    <description>Recent content in Tools on DevOps journey</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; Matteo Guadrini</copyright>
+    <lastBuildDate>Sun, 06 Jun 2021 15:44:10 +0200</lastBuildDate><atom:link href="https://matteoguadrini.github.io/tools/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

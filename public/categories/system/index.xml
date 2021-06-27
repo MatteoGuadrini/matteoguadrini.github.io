@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>system on DevOps journey</title>
+    <link>https://matteoguadrini.github.io/categories/system/</link>
+    <description>Recent content in system on DevOps journey</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; Matteo Guadrini</copyright>
+    <lastBuildDate>Sun, 06 Jun 2021 15:44:10 +0200</lastBuildDate><atom:link href="https://matteoguadrini.github.io/categories/system/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tools</title>
+      <link>https://matteoguadrini.github.io/tools/</link>
+      <pubDate>Sun, 06 Jun 2021 15:44:10 +0200</pubDate>
+      
+      <guid>https://matteoguadrini.github.io/tools/</guid>
+      <description>In this section you will find the tools, utilities and editors or IDE that I use daily for my work, my hobbies and my open source projects, which you can find on my Github page.
+Fedora: Welcome to Freedom Fedora is a Linux kernel based operating system. It offers three editions:
+ Fedora Workstation, for all desktops and laptops Fedora Server, for any server Fedora IoT, for all ARM devices  It is also available in different variations, called spin.</description>
+    </item>
+    
+    <item>
+      <title>Automate Font Preview</title>
+      <link>https://matteoguadrini.github.io/posts/automate-font-preview/</link>
+      <pubDate>Sun, 16 May 2021 11:25:09 +0200</pubDate>
+      
+      <guid>https://matteoguadrini.github.io/posts/automate-font-preview/</guid>
+      <description>In the life of a designer or font maker, the need arises to see how a font looks on a certain image, with a certain color and size, or simply, have a reliable preview of the final result. To do this, graphical tools are required.
+Preview of a font To work with font previews, there are system previewers at the level of any operating system. This is a great starter tool to see what a font will look like on our project.</description>
+    </item>
+    
+    <item>
+      <title>Samba File Server</title>
+      <link>https://matteoguadrini.github.io/posts/samba-file-server/</link>
+      <pubDate>Sun, 02 May 2021 15:31:45 +0200</pubDate>
+      
+      <guid>https://matteoguadrini.github.io/posts/samba-file-server/</guid>
+      <description>Why a file server? One of the most common ways to network Linux and Windows computers is to configure Samba as a File Server. This section covers setting up a Samba server to share files with Windows clients.
+Configure Samba First of all, you have to prepare your machine with everything you need. To do this server, I&amp;rsquo;m using a Fedora 33 server OS. Let&amp;rsquo;s start by installing the packages needed to make our server a Samba file server.</description>
+    </item>
+    
+    <item>
+      <title>Zen of Open Source</title>
+      <link>https://matteoguadrini.github.io/posts/zen-of-open-source/</link>
+      <pubDate>Sun, 28 Mar 2021 10:26:28 +0100</pubDate>
+      
+      <guid>https://matteoguadrini.github.io/posts/zen-of-open-source/</guid>
+      <description>Open philosophy When can a project be defined as open-source? When, as the word says, you open the source code and make it available to other people.
+Of course, this is the first concept behind the open-source philosophy. But there is more.
+Open source license To make a project open-source first, you need to release it with a certain license. In fact, there are a lot of them. They all share the main philosophy, but differ from each other in small points.</description>
+    </item>
+    
+    <item>
+      <title>Linux Enterprise Backup</title>
+      <link>https://matteoguadrini.github.io/posts/linux-enterprise-backup/</link>
+      <pubDate>Sun, 28 Feb 2021 14:17:38 +0100</pubDate>
+      
+      <guid>https://matteoguadrini.github.io/posts/linux-enterprise-backup/</guid>
+      <description>Why a backup is needed Having a backup system is necessary to ensure continuity to your systems, whatever work they do.
+Backup systems can be simple if few machines are involved or complex in case there are hundreds of thousands of machines, such as in the cloud.
+What to choose If your ecosystem includes a few machines, you will probably want to choose something simple .
+A good and simple backup system is rsync.</description>
+    </item>
+    
+  </channel>
+</rss>

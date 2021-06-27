@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+  Containerized Python Development &ndash; DevOps journey
+
+    </title>
+    
+    <meta content="docker, flask, image" name="keywords">
+    
+    
+    <meta name="description" property="og:description" content="Developing python projects When we develop more than one python project, we need to configure our development environment with the dependencies of all the projects. This becomes even more complicated when there are many people on the development of the project. To do this, you need to create a development environment that is isolated from the others. We can do this thanks to docker containers.
+Prepare project Let&amp;rsquo;s imagine that our project has this structure:|">
+    
+
+    <meta name="apple-mobile-web-app-title" content="DevOps journey">
+    
+    
+    <link rel="icon" href="https://matteoguadrini.github.iofavicon-64.png">
+    <link rel="apple-touch-icon" href="https://matteoguadrini.github.ioapple-touch-icon.png">
+    <link rel="mask-icon" size="any" href="https://matteoguadrini.github.iopinned-icon.svg">
+    
+    
+    
+
+
+    <link rel="stylesheet" href="/assets/syntax.css">
+    <link rel="stylesheet" href="/assets/primer-build.css">
+    <link rel="stylesheet" href="/assets/style.css">
+    <link rel="stylesheet" href="/assets/custom_style.css">
+  </head>
+
+
+  <body class="bg-gray">
+    <div id="holy" class="container-lg bg-white h-100">
+
+      <div id="header" class="px-1 bg-white">
+        <nav class="UnderlineNav UnderlineNav--right px-2">
+  <a class="UnderlineNav-actions muted-link h2" href="https://matteoguadrini.github.io">
+    DevOps journey
+  </a>
+
+  
+  
+  <div class="UnderlineNav-body">
+    
+    
+    
+    <a class="UnderlineNav-item" href="/about/">
+      
+      <span>About</span>
+    </a>
+    
+    
+    
+    
+    <a class="UnderlineNav-item" href="/tools/">
+      
+      <span>Tools</span>
+    </a>
+    
+    
+  </div>
+  
+</nav>
+
+      </div>
+
+      <div role="main" id="main" class="holy-main markdown-body px-4 bg-white">
+        
+
+<div class="Subhead">
+  <div class="Subhead-heading">
+    <div class="h1 mt-3 mb-1">Containerized Python Development</div>
+  </div>
+  <div class="Subhead-description">
+    
+
+
+<a href='/categories/devops' class="muted-link">
+  <span class="Label Label--gray-darker">devops</span>
+</a>
+
+
+
+<a href='/tags/python' class="muted-link">
+  <span class="Label Label--gray">python</span>
+</a>
+
+<a href='/tags/docker' class="muted-link">
+  <span class="Label Label--gray">docker</span>
+</a>
+
+<a href='/tags/linux' class="muted-link">
+  <span class="Label Label--gray">linux</span>
+</a>
+
+
+
+    
+    <div class="float-md-right">
+      <span title="Lastmod: 2020-12-26. Published at: 2020-12-26.">
+        
+          Published: 2020-12-26
+        
+      </span>
+    </div>
+    
+  </div>
+</div>
+<article>
+  
+  <section class="pb-6 mb-3 border-bottom">
+    <p><img src="https://i.morioh.com/9ccb7b143f.png" alt="docker and python"></p>
+<h1 id="developing-python-projects">Developing python projects</h1>
+<p>When we develop more than one python project, we need to configure our development environment with the dependencies of all the projects. This becomes even more complicated when there are many people on the development of the project.
+To do this, you need to create a development environment that is isolated from the others. We can do this thanks to <strong>docker</strong> containers.</p>
+<h2 id="prepare-project">Prepare project</h2>
+<p>Let&rsquo;s imagine that our project has this structure:</p>
+<pre><code class="language-console" data-lang="console">pydk
+├─── requirements.txt
+└─── src
+     └─── server.py
+</code></pre><p>We now think that our project may depend on some external libraries, such as <strong>Flask</strong>. Let&rsquo;s prepare a file called <em>requirements.txt</em> with a line inside it: <code>Flask==1.1.2</code></p>
+<p>While our <em>server.py</em> application, it will be a simple Flask application like the following:</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+<span class="n">server</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="nd">@server.route</span><span class="p">(</span><span class="s2">&#34;/&#34;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">hello_docker</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">&#34;Hello docker!&#34;</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+   <span class="n">server</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;0.0.0.0&#39;</span><span class="p">)</span>
+</code></pre></div><p>Now, we can run and continue to develop this project locally, but if we had other projects with requirements that would conflict, we would break this or other projects.
+So, let&rsquo;s see how we can isolate this project inside a container that is the same for all the developers who are going to develop.</p>
+<h2 id="prepare-dockerfile">Prepare dockerfile</h2>
+<p>Now we need to create a <em>Dockerfile</em> (<code>pydk/Dockerfile</code>) that contains suitable instructions to build our container so that it can execute our python code.</p>
+<div class="highlight"><pre class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="c"># base image</span><span class="err">
+</span><span class="err"></span><span class="k">FROM</span><span class="s"> python:3.9</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="c"># working directory in the container</span><span class="err">
+</span><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /pydk</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="c"># copy the dependencies file to the working directory</span><span class="err">
+</span><span class="err"></span><span class="k">COPY</span> requirements.txt .<span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="c"># install dependencies</span><span class="err">
+</span><span class="err"></span><span class="k">RUN</span> pip install -r requirements.txt<span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="c"># copy the content of the local src directory to the working directory</span><span class="err">
+</span><span class="err"></span><span class="k">COPY</span> src/ .<span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="c"># command to run on container start</span><span class="err">
+</span><span class="err"></span><span class="k">CMD</span> <span class="p">[</span> <span class="s2">&#34;python&#34;</span><span class="p">,</span> <span class="s2">&#34;./server.py&#34;</span> <span class="p">]</span><span class="err">
+</span></code></pre></div><p>Now we run the command to build our image. When docker builder kicks in, you can see all the steps we wrote in our dockerfile:</p>
+<pre><code class="language-console" data-lang="console">$ docker build -t mypy .
+Sending build context to Docker daemon  4.608kB
+Step 1/6 : FROM python:3.9
+3.9: Pulling from library/python
+6c33745f49b4: Pull complete 
+ef072fc32a84: Pull complete 
+c0afb8e68e0b: Pull complete 
+d599c07d28e6: Pull complete 
+f2ecc74db11a: Pull complete 
+26856d31ce86: Pull complete 
+a463ae07b5f3: Pull complete 
+54f24c50f14e: Pull complete 
+168ee6df05fe: Pull complete 
+Digest: sha256:39c16d1a064c0239939d4ed52923b736c25b389e6ea439d5652b8fc9564ede76
+Status: Downloaded newer image for python:3.9
+ ---&gt; d1eef6fb8dbe
+Step 2/6 : WORKDIR /pydk
+ ---&gt; Running in ab2f8923ad12
+Removing intermediate container ab2f8923ad12
+ ---&gt; bad3fb87e418
+Step 3/6 : COPY requirements.txt .
+ ---&gt; eade175d7095
+Step 4/6 : RUN pip install -r requirements.txt
+ ---&gt; Running in de2b7fcd2c6d
+Collecting Flask==1.1.2
+  Downloading Flask-1.1.2-py2.py3-none-any.whl (94 kB)
+Collecting click&gt;=5.1
+  Downloading click-7.1.2-py2.py3-none-any.whl (82 kB)
+Collecting itsdangerous&gt;=0.24
+  Downloading itsdangerous-1.1.0-py2.py3-none-any.whl (16 kB)
+Collecting Jinja2&gt;=2.10.1
+  Downloading Jinja2-2.11.2-py2.py3-none-any.whl (125 kB)
+Collecting MarkupSafe&gt;=0.23
+  Downloading MarkupSafe-1.1.1.tar.gz (19 kB)
+Collecting Werkzeug&gt;=0.15
+  Downloading Werkzeug-1.0.1-py2.py3-none-any.whl (298 kB)
+Building wheels for collected packages: MarkupSafe
+  Building wheel for MarkupSafe (setup.py): started
+  Building wheel for MarkupSafe (setup.py): finished with status 'done'
+  Created wheel for MarkupSafe: filename=MarkupSafe-1.1.1-cp39-cp39-linux_x86_64.whl size=32240 sha256=6fbda6c15fe2abefc6c8f4ec2ac66c421b1cf997c1a53a532a39bbebc8083860
+  Stored in directory: /root/.cache/pip/wheels/e0/19/6f/6ba857621f50dc08e084312746ed3ebc14211ba30037d5e44e
+Successfully built MarkupSafe
+Installing collected packages: MarkupSafe, Werkzeug, Jinja2, itsdangerous, click, Flask
+Successfully installed Flask-1.1.2 Jinja2-2.11.2 MarkupSafe-1.1.1 Werkzeug-1.0.1 click-7.1.2 itsdangerous-1.1.0
+Removing intermediate container de2b7fcd2c6d
+ ---&gt; 595ceaa19d29
+Step 5/6 : COPY src/ .
+ ---&gt; 98294355a272
+Step 6/6 : CMD [ &quot;python&quot;, &quot;./server.py&quot; ]
+ ---&gt; Running in 1fb2a61f97ce
+Removing intermediate container 1fb2a61f97ce
+ ---&gt; 09fd1053a1c1
+Successfully built 09fd1053a1c1
+Successfully tagged mypy:latest
+</code></pre><p>Let&rsquo;s check the newly created image.</p>
+<pre><code class="language-console" data-lang="console">$ docker images
+REPOSITORY                         TAG                 IMAGE ID            CREATED             SIZE
+mypy                               latest              09fd1053a1c1        15 minutes ago      896MB
+python                             3.9                 d1eef6fb8dbe        8 days ago          885MB
+</code></pre><h2 id="test-flask-on-docker">Test Flask on docker</h2>
+<p>Now we can launch our image and test our application.</p>
+<pre><code class="language-console" data-lang="console">$ docker run -d -p 5000:5000 mypy
+487c215ec0cc2b44c1612c0aadbd3f1f47c32a0b29273da3dabf77351717852c
+
+$ docker ps
+CONTAINER ID        IMAGE               COMMAND                CREATED             STATUS              PORTS                    NAMES
+487c215ec0cc        mypy                &quot;python ./server.py&quot;   28 seconds ago      Up 27 seconds       0.0.0.0:5000-&gt;5000/tcp   crazy_hermann
+
+$ curl http://localhost:5000
+Hello docker!
+</code></pre><h2 id="conclusion">Conclusion</h2>
+<p>We have created a small development environment for <strong>python</strong> application. Now, we can connect to our image and continue the development of the application without affecting our local environment.</p>
+
+  </section>
+
+  <section>
+    
+      
+    
+  </section>
+</article>
+
+      </div>
+
+      <div id="side" class="pr-1 bg-white">
+        <aside class="pr-3">
+          
+  
+    <div id="toc" class="Box Box--blue mb-3">
+      <b>Containerized Python Development</b><nav id="TableOfContents">
+  <ul>
+    <li><a href="#prepare-project">Prepare project</a></li>
+    <li><a href="#prepare-dockerfile">Prepare dockerfile</a></li>
+    <li><a href="#test-flask-on-docker">Test Flask on docker</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav></div>
+  
+
+  
+    
+    
+      <div>
+        
+          <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        
+
+        
+          <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button&size=small&mobile_iframe=true&width=61&height=20&appId" width="61" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+        
+
+        
+
+        
+          <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en"></a>
+          <script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
+        
+
+      </div>
+    
+  
+
+        </aside>
+      </div>
+
+      <div id="footer" class="pt-2 pb-3 bg-white text-center">
+        
+
+  <span class="text-small text-gray">
+    © Matteo Guadrini &middot; 
+
+    Powered by the
+    <a href="https://github.com/qqhann/hugo-primer" class="link-gray-dark">Hugo-Primer</a> theme for
+    <a href="https://gohugo.io" class="link-gray-dark">Hugo</a>.
+  </span>
+
+
+      </div>
+    </div>
+
+    
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });</script>
+    
+  </body>
+</html>
