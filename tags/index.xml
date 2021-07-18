@@ -7,11 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; Matteo Guadrini</copyright>
-    <lastBuildDate>Sun, 06 Jun 2021 15:44:10 +0200</lastBuildDate><atom:link href="https://matteoguadrini.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 18 Jul 2021 13:56:11 +0200</lastBuildDate><atom:link href="https://matteoguadrini.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>bash</title>
+      <link>https://matteoguadrini.github.io/tags/bash/</link>
+      <pubDate>Sun, 18 Jul 2021 13:56:11 +0200</pubDate>
+      
+      <guid>https://matteoguadrini.github.io/tags/bash/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>linux</title>
       <link>https://matteoguadrini.github.io/tags/linux/</link>
-      <pubDate>Sun, 06 Jun 2021 15:44:10 +0200</pubDate>
+      <pubDate>Sun, 18 Jul 2021 13:56:11 +0200</pubDate>
       
       <guid>https://matteoguadrini.github.io/tags/linux/</guid>
       <description></description>
@@ -20,18 +29,18 @@
     <item>
       <title>python</title>
       <link>https://matteoguadrini.github.io/tags/python/</link>
-      <pubDate>Sun, 06 Jun 2021 15:44:10 +0200</pubDate>
+      <pubDate>Sun, 18 Jul 2021 13:56:11 +0200</pubDate>
       
       <guid>https://matteoguadrini.github.io/tags/python/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>bash</title>
-      <link>https://matteoguadrini.github.io/tags/bash/</link>
-      <pubDate>Sun, 16 May 2021 11:25:09 +0200</pubDate>
+      <title>terminal</title>
+      <link>https://matteoguadrini.github.io/tags/terminal/</link>
+      <pubDate>Sun, 18 Jul 2021 13:56:11 +0200</pubDate>
       
-      <guid>https://matteoguadrini.github.io/tags/bash/</guid>
+      <guid>https://matteoguadrini.github.io/tags/terminal/</guid>
       <description></description>
     </item>
     

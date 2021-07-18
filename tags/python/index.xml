@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; Matteo Guadrini</copyright>
-    <lastBuildDate>Sun, 06 Jun 2021 15:44:10 +0200</lastBuildDate><atom:link href="https://matteoguadrini.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 18 Jul 2021 13:56:11 +0200</lastBuildDate><atom:link href="https://matteoguadrini.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Happy Dinosauring</title>
+      <link>https://matteoguadrini.github.io/posts/happy-dinosauring/</link>
+      <pubDate>Sun, 18 Jul 2021 13:56:11 +0200</pubDate>
+      
+      <guid>https://matteoguadrini.github.io/posts/happy-dinosauring/</guid>
+      <description>Fun terminal tools There are very useful command line tools, which are used for daily administration, whatever the job you have to do, an example are find, grep, cat, less, etc. There are also more complex tools that require the study and consultation of manuals such as docker, vagrant, etc. and are for advanced users such as systems engineers and developers.
+Other tools are used &amp;hellip; well, practically nothing, except to elicit a laugh.</description>
+    </item>
+    
     <item>
       <title>Tools</title>
       <link>https://matteoguadrini.github.io/tools/</link>
