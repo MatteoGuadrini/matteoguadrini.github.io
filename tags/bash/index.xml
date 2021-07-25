@@ -7,7 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; Matteo Guadrini</copyright>
-    <lastBuildDate>Sun, 18 Jul 2021 13:56:11 +0200</lastBuildDate><atom:link href="https://matteoguadrini.github.io/tags/bash/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 25 Jul 2021 16:11:25 +0200</lastBuildDate><atom:link href="https://matteoguadrini.github.io/tags/bash/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Data to Report</title>
+      <link>https://matteoguadrini.github.io/posts/data-to-report/</link>
+      <pubDate>Sun, 25 Jul 2021 16:11:25 +0200</pubDate>
+      
+      <guid>https://matteoguadrini.github.io/posts/data-to-report/</guid>
+      <description>Task report In the life of every system manager, sooner or later it has happened to do reporting, or by collecting data from logs, databases as diverse as LDAP servers.
+The thing you will surely have done is to collect data manually, using tools like grep and awk for configuration files and logs.
+$ cat example.log | grep &#39;ERROR&#39; $ awk &#39;{print $2}&#39; example.log Or a bash script that analyzes each row and then selects only those of interest.</description>
+    </item>
+    
     <item>
       <title>Happy Dinosauring</title>
       <link>https://matteoguadrini.github.io/posts/happy-dinosauring/</link>
