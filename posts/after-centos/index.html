@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+  After Centos &ndash; DevOps journey
+
+    </title>
+    
+    <meta content="centos, rocky-linux" name="keywords">
+    
+    
+    <meta name="description" property="og:description" content="Is CentOS&amp;hellip;dead? CentOS is a Linux distribution that provides a free and open-source community-supported computing platform, functionally compatible with its upstream source, Red Hat Enterprise Linux (RHEL). In December 2020, Red Hat unilaterally terminated CentOS development. In response, CentOS founder, Gregory Kurtzer, created the Rocky Linux project as a successor to the original mission of CentOS.
+Rocky Linux Rocky Linux is a Linux distribution that is intended to be a downstream, complete binary-compatible release using the Red Hat Enterprise Linux (RHEL) operating system source code.|">
+    
+
+    <meta name="apple-mobile-web-app-title" content="DevOps journey">
+    
+    
+    <link rel="icon" href="https://matteoguadrini.github.iofavicon-64.png">
+    <link rel="apple-touch-icon" href="https://matteoguadrini.github.ioapple-touch-icon.png">
+    <link rel="mask-icon" size="any" href="https://matteoguadrini.github.iopinned-icon.svg">
+    
+    
+    
+
+
+    <link rel="stylesheet" href="/assets/syntax.css">
+    <link rel="stylesheet" href="/assets/primer-build.css">
+    <link rel="stylesheet" href="/assets/style.css">
+    <link rel="stylesheet" href="/assets/custom_style.css">
+  </head>
+
+
+  <body class="bg-gray">
+    <div id="holy" class="container-lg bg-white h-100">
+
+      <div id="header" class="px-1 bg-white">
+        <nav class="UnderlineNav UnderlineNav--right px-2">
+  <a class="UnderlineNav-actions muted-link h2" href="https://matteoguadrini.github.io">
+    DevOps journey
+  </a>
+
+  
+  
+  <div class="UnderlineNav-body">
+    
+    
+    
+    <a class="UnderlineNav-item" href="/about/">
+      
+      <span>About</span>
+    </a>
+    
+    
+    
+    
+    <a class="UnderlineNav-item" href="/tools/">
+      
+      <span>Tools</span>
+    </a>
+    
+    
+  </div>
+  
+</nav>
+
+      </div>
+
+      <div role="main" id="main" class="holy-main markdown-body px-4 bg-white">
+        
+
+<div class="Subhead">
+  <div class="Subhead-heading">
+    <div class="h1 mt-3 mb-1">After Centos</div>
+  </div>
+  <div class="Subhead-description">
+    
+
+
+<a href='/categories/system' class="muted-link">
+  <span class="Label Label--gray-darker">system</span>
+</a>
+
+<a href='/categories/devops' class="muted-link">
+  <span class="Label Label--gray-darker">devops</span>
+</a>
+
+
+
+<a href='/tags/bash' class="muted-link">
+  <span class="Label Label--gray">bash</span>
+</a>
+
+<a href='/tags/linux' class="muted-link">
+  <span class="Label Label--gray">linux</span>
+</a>
+
+
+
+    
+    <div class="float-md-right">
+      <span title="Lastmod: 2021-09-04. Published at: 2021-09-04.">
+        
+          Published: 2021-09-04
+        
+      </span>
+    </div>
+    
+  </div>
+</div>
+<article>
+  
+  <section class="pb-6 mb-3 border-bottom">
+    <p><img src="https://i.ytimg.com/vi/LJbFBiD9cHo/maxresdefault.jpg" alt="centos dead"></p>
+<h2 id="is-centosdead">Is CentOS&hellip;dead?</h2>
+<p><strong>CentOS</strong> is a Linux distribution that provides a free and open-source community-supported computing platform, functionally compatible with its upstream source, Red Hat Enterprise Linux (RHEL).
+In December 2020, Red Hat unilaterally terminated CentOS development. In response, CentOS founder, <em>Gregory Kurtzer</em>, created the <strong>Rocky Linux</strong> project as a successor to the original mission of CentOS.</p>
+<h2 id="rocky-linux">Rocky Linux</h2>
+<p><em>Rocky Linux</em> is a Linux distribution that is intended to be a downstream, complete binary-compatible release using the Red Hat Enterprise Linux (RHEL) operating system source code.</p>
+<h3 id="software-foundation">Software foundation</h3>
+<p>Completely outside of the Red Hat camp—just like CentOS used to be—Rocky Linux is governed and administered by the Rocky Enterprise Software Foundation. Seven months after announcing the project, the first GA version of Rocky Linux was released.</p>
+<h2 id="migration">Migration</h2>
+<p>First, download an image of Rocky Linux to <a href="https://rockylinux.org/download">official website</a>. After that, install this image on your server machine or virtual machine.
+Boot image from iso:
+<img src="https://www.cloudsavvyit.com/p/uploads/2021/07/4a47a0db-2.png?trim=1,1&amp;bg-color=000&amp;pad=1,1" alt="Rocky boot"></p>
+<h3 id="installation">Installation</h3>
+<p>Selecting <em>“Install Rocky Linux 8”</em> from the installation menu displays a series of familiar screens. Choose your keyboard and regional settings, set a root password and choose your partitioning scheme and the part of the installation that copies the files starts up.</p>
+<p>Restart and you will see the Rocky Linux login screen. Once logged in, a familiar and minimalist GNOME 3.32.2 desktop welcomes you.</p>
+<p><img src="https://www.cloudsavvyit.com/p/uploads/2021/07/10fb15c7-2.png?trim=1,1&amp;bg-color=000&amp;pad=1,1" alt="Rocky gnome"></p>
+<p>Easy, not?</p>
+<h2 id="other-possibilities">Other possibilities?</h2>
+<p>Rocky Linux isn&rsquo;t the only way to replace CentOS though.
+<a href="https://almalinux.org/">Alma Linux</a>, developed by Cloud Linux, is an open-source operating system that is 1: 1 binary compatible with RHEL and is supported by the community.</p>
+<p>Another distro is <a href="https://yum.oracle.com/index.html">Oracle Linux</a>; is engineered to provide reliability, exceptional performance, and security for open cloud infrastructure. As pointed out early, it&rsquo;s completely free to download, use and redistribute.
+It is freely distributed by Oracle and made available under a partial GNU GPL license.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Big names are also eager to be associated with <em>Rocky Linux</em>. Google is a &ldquo;main sponsor&rdquo; of the RESF and has built a custom Rocky Linux for the Google Compute Engine. Microsoft has signed up as a RESF partner and is committed to ensuring that Rocky Linux is available on its Azure platform.</p>
+<p>A project is not just about software. The Rocky Linux project has spent a long time deciding and formalizing its internal structure, governance and ethics.</p>
+<p>To you the choice.</p>
+
+  </section>
+
+  <section>
+    
+      
+    
+  </section>
+</article>
+
+      </div>
+
+      <div id="side" class="pr-1 bg-white">
+        <aside class="pr-3">
+          
+  
+    <div id="toc" class="Box Box--blue mb-3">
+      <b>After Centos</b><nav id="TableOfContents">
+  <ul>
+    <li><a href="#is-centosdead">Is CentOS&hellip;dead?</a></li>
+    <li><a href="#rocky-linux">Rocky Linux</a>
+      <ul>
+        <li><a href="#software-foundation">Software foundation</a></li>
+      </ul>
+    </li>
+    <li><a href="#migration">Migration</a>
+      <ul>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#other-possibilities">Other possibilities?</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav></div>
+  
+
+  
+    
+    
+      <div>
+        
+          <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        
+
+        
+          <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button&size=small&mobile_iframe=true&width=61&height=20&appId" width="61" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+        
+
+        
+
+        
+          <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en"></a>
+          <script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
+        
+
+      </div>
+    
+  
+
+        </aside>
+      </div>
+
+      <div id="footer" class="pt-2 pb-3 bg-white text-center">
+        
+
+  <span class="text-small text-gray">
+    © Matteo Guadrini &middot; 
+
+    Powered by the
+    <a href="https://github.com/qqhann/hugo-primer" class="link-gray-dark">Hugo-Primer</a> theme for
+    <a href="https://gohugo.io" class="link-gray-dark">Hugo</a>.
+  </span>
+
+
+      </div>
+    </div>
+
+    
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });</script>
+    
+  </body>
+</html>
