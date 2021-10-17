@@ -7,7 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; Matteo Guadrini</copyright>
-    <lastBuildDate>Sat, 04 Sep 2021 15:20:37 +0200</lastBuildDate><atom:link href="https://matteoguadrini.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 16 Oct 2021 15:01:27 +0200</lastBuildDate><atom:link href="https://matteoguadrini.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Python Stubs</title>
+      <link>https://matteoguadrini.github.io/posts/python-stubs/</link>
+      <pubDate>Sat, 16 Oct 2021 15:01:27 +0200</pubDate>
+      
+      <guid>https://matteoguadrini.github.io/posts/python-stubs/</guid>
+      <description>What is a stub file? It is a file with the .pyi extension, which describes the Python type information, both input and return for functions and omits the logical part. Using a stub file has the following advantages (see PEP 484).
+Example sample.py
+def stringify(what): return str(what) Example sample.pyi
+from typing import Union def stringify(what: Union[int, list, dict]) -&amp;gt; str: ... Advantages Type information can be added by adding a separate stub file to a third-party library that does not have type annotations.</description>
+    </item>
+    
     <item>
       <title>After Centos</title>
       <link>https://matteoguadrini.github.io/posts/after-centos/</link>

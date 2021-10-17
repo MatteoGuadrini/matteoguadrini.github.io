@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; Matteo Guadrini</copyright>
-    <lastBuildDate>Sat, 04 Sep 2021 15:20:37 +0200</lastBuildDate><atom:link href="https://matteoguadrini.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 16 Oct 2021 15:01:27 +0200</lastBuildDate><atom:link href="https://matteoguadrini.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>python</title>
+      <link>https://matteoguadrini.github.io/tags/python/</link>
+      <pubDate>Sat, 16 Oct 2021 15:01:27 +0200</pubDate>
+      
+      <guid>https://matteoguadrini.github.io/tags/python/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>bash</title>
       <link>https://matteoguadrini.github.io/tags/bash/</link>
@@ -32,15 +41,6 @@
       <pubDate>Sun, 01 Aug 2021 12:36:58 +0100</pubDate>
       
       <guid>https://matteoguadrini.github.io/tags/kotlin/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>python</title>
-      <link>https://matteoguadrini.github.io/tags/python/</link>
-      <pubDate>Sun, 01 Aug 2021 12:36:58 +0100</pubDate>
-      
-      <guid>https://matteoguadrini.github.io/tags/python/</guid>
       <description></description>
     </item>
     

@@ -81,6 +81,20 @@
   
   <div>
     <div>
+      <a href="/posts/python-stubs/">
+        <h3>Python Stubs</h3>
+      </a>
+      <small>https://matteoguadrini.github.io/posts/python-stubs/</small>
+      2021-10-16
+    </div>
+    What is a stub file? It is a file with the .pyi extension, which describes the Python type information, both input and return for functions and omits the logical part. Using a stub file has the following advantages (see PEP 484).
+Example sample.py
+def stringify(what): return str(what) Example sample.pyi
+from typing import Union def stringify(what: Union[int, list, dict]) -&gt; str: ... Advantages Type information can be added by adding a separate stub file to a third-party library that does not have type annotations.
+  </div>
+  
+  <div>
+    <div>
       <a href="/posts/after-centos/">
         <h3>After Centos</h3>
       </a>
@@ -117,18 +131,6 @@ Left and Right Left and Right, are classes wich represent the error and success 
     Task report In the life of every system manager, sooner or later it has happened to do reporting, or by collecting data from logs, databases as diverse as LDAP servers.
 The thing you will surely have done is to collect data manually, using tools like grep and awk for configuration files and logs.
 $ cat example.log | grep 'ERROR' $ awk '{print $2}' example.log Or a bash script that analyzes each row and then selects only those of interest.
-  </div>
-  
-  <div>
-    <div>
-      <a href="/posts/happy-dinosauring/">
-        <h3>Happy Dinosauring</h3>
-      </a>
-      <small>https://matteoguadrini.github.io/posts/happy-dinosauring/</small>
-      2021-07-18
-    </div>
-    Fun terminal tools There are very useful command line tools, which are used for daily administration, whatever the job you have to do, an example are find, grep, cat, less, etc. There are also more complex tools that require the study and consultation of manuals such as docker, vagrant, etc. and are for advanced users such as systems engineers and developers.
-Other tools are used &hellip; well, practically nothing, except to elicit a laugh.
   </div>
   
 
