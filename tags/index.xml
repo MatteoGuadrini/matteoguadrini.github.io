@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; Matteo Guadrini</copyright>
-    <lastBuildDate>Sat, 16 Oct 2021 15:01:27 +0200</lastBuildDate><atom:link href="https://matteoguadrini.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 07 Nov 2021 15:16:16 +0100</lastBuildDate><atom:link href="https://matteoguadrini.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>System</title>
+      <link>https://matteoguadrini.github.io/tags/system/</link>
+      <pubDate>Sun, 07 Nov 2021 15:16:16 +0100</pubDate>
+      
+      <guid>https://matteoguadrini.github.io/tags/system/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>python</title>
       <link>https://matteoguadrini.github.io/tags/python/</link>
