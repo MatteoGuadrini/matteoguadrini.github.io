@@ -130,27 +130,27 @@ One of the most used virtual machine managers is ESxi from vmware.|">
 <h3 id="lets-intercept-the-problem">Let&rsquo;s intercept the problem</h3>
 <p>First, you need to log in as root on <em>ESxI host</em> to start the cli.
 After that, get a list of all registered virtual machines, identified by their <strong>VMID</strong> and <strong>Display Name</strong> by running this command:</p>
-<pre><code class="language-console" data-lang="console"># vim-cmd vmsvc/getallvms
-</code></pre><p>Take note of the impacted virtual machine ID VMID.</p>
-<pre><code class="language-console" data-lang="console"># vim-cmd vmsvc/power.getstate &lt;VMID&gt;
-</code></pre><p>Check if there hanging task on the impacted virtual machine that prevent the machine from powering on by running this command:</p>
-<pre><code class="language-console" data-lang="console"># vim-cmd vmsvc/get.tasklist &lt;VMID&gt;
-</code></pre><p>An example output will look like this:</p>
-<pre><code class="language-console" data-lang="console">(ManagedObjectReference) [
-'vim.Task:haTask-2-vim.VirtualMachine.createSnapshot-182550283',
-'vim.Task:haTask-2-vim.VirtualMachine.consolidateDisks-182550274'
-]
-</code></pre><p>Now we need to figure out which task is blocking other operations such as shutdown.</p>
-<pre><code class="language-console" data-lang="console"># vim-cmd vimsvc/task_info haTask-2-vim.VirtualMachine.createSnapshot-182550283
-</code></pre><p>The task is hung and needs to be cancelled, use the command:</p>
-<pre><code class="language-console" data-lang="console"># vim-cmd vimsvc/task_cancel &lt;task_id&gt;
-</code></pre><p>Now, shutdown the virtual machine using the VMID and run this command:</p>
-<pre><code class="language-console" data-lang="console"># vim-cmd vmsvc/power.shutdown &lt;VMID&gt;
-</code></pre><blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="gp"># </span>vim-cmd vmsvc/getallvms
+</code></pre></div><p>Take note of the impacted virtual machine ID VMID.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="gp"># </span>vim-cmd vmsvc/power.getstate &lt;VMID&gt;
+</code></pre></div><p>Check if there hanging task on the impacted virtual machine that prevent the machine from powering on by running this command:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="gp"># </span>vim-cmd vmsvc/get.tasklist &lt;VMID&gt;
+</code></pre></div><p>An example output will look like this:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="go">(ManagedObjectReference) [
+</span><span class="go">&#39;vim.Task:haTask-2-vim.VirtualMachine.createSnapshot-182550283&#39;,
+</span><span class="go">&#39;vim.Task:haTask-2-vim.VirtualMachine.consolidateDisks-182550274&#39;
+</span><span class="go">]
+</span></code></pre></div><p>Now we need to figure out which task is blocking other operations such as shutdown.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="gp"># </span>vim-cmd vimsvc/task_info haTask-2-vim.VirtualMachine.createSnapshot-182550283
+</code></pre></div><p>The task is hung and needs to be cancelled, use the command:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="gp"># </span>vim-cmd vimsvc/task_cancel &lt;task_id&gt;
+</code></pre></div><p>Now, shutdown the virtual machine using the VMID and run this command:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="gp"># </span>vim-cmd vmsvc/power.shutdown &lt;VMID&gt;
+</code></pre></div><blockquote>
 <p><strong>Note</strong>: If the virtual machine fails to shut down, run this command:</p>
 </blockquote>
-<pre><code class="language-console" data-lang="console"># vim-cmd vmsvc/power.off &lt;VMID&gt;
-</code></pre><h2 id="conclusion">Conclusion</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="gp"># </span>vim-cmd vmsvc/power.off &lt;VMID&gt;
+</code></pre></div><h2 id="conclusion">Conclusion</h2>
 <p>In this article, we have seen how to restart a virtual machine locked by the vmware host. Of course you should never use this procedure under normal conditions, but you know, errors and exceptions are always around the corner.</p>
 
   </section>

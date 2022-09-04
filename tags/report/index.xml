@@ -16,7 +16,7 @@
       <guid>https://matteoguadrini.github.io/posts/data-to-report/</guid>
       <description>Task report In the life of every system manager, sooner or later it has happened to do reporting, or by collecting data from logs, databases as diverse as LDAP servers.
 The thing you will surely have done is to collect data manually, using tools like grep and awk for configuration files and logs.
-$ cat example.log | grep &#39;ERROR&#39; $ awk &#39;{print $2}&#39; example.log Or a bash script that analyzes each row and then selects only those of interest.</description>
+$ cat example.log | grep &amp;#39;ERROR&amp;#39; $ awk &amp;#39;{print $2}&amp;#39; example.log Or a bash script that analyzes each row and then selects only those of interest.</description>
     </item>
     
   </channel>

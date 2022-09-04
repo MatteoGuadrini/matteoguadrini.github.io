@@ -7,7 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; Matteo Guadrini</copyright>
-    <lastBuildDate>Sat, 16 Oct 2021 15:01:27 +0200</lastBuildDate><atom:link href="https://matteoguadrini.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 04 Sep 2022 14:56:06 +0200</lastBuildDate><atom:link href="https://matteoguadrini.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Python NOSQL Api</title>
+      <link>https://matteoguadrini.github.io/posts/python-nosql-api/</link>
+      <pubDate>Sun, 04 Sep 2022 14:56:06 +0200</pubDate>
+      
+      <guid>https://matteoguadrini.github.io/posts/python-nosql-api/</guid>
+      <description>The world of databases is truly vast. But it is governed by a standard that respects the SQL language API. But there is another world; that of NOSQL databases.
+A little tidy There are four types of NOSQL databases:
+ Key/Value database Column database Document database Graph database  These four types of databases, unfortunately, do not respond to any API and the various libraries, such as the python ones, have various objects and various methods for extracting and inserting data.</description>
+    </item>
+    
     <item>
       <title>Python Stubs</title>
       <link>https://matteoguadrini.github.io/posts/python-stubs/</link>
@@ -41,7 +52,7 @@ Left and Right Left and Right, are classes wich represent the error and success 
       <guid>https://matteoguadrini.github.io/posts/data-to-report/</guid>
       <description>Task report In the life of every system manager, sooner or later it has happened to do reporting, or by collecting data from logs, databases as diverse as LDAP servers.
 The thing you will surely have done is to collect data manually, using tools like grep and awk for configuration files and logs.
-$ cat example.log | grep &#39;ERROR&#39; $ awk &#39;{print $2}&#39; example.log Or a bash script that analyzes each row and then selects only those of interest.</description>
+$ cat example.log | grep &amp;#39;ERROR&amp;#39; $ awk &amp;#39;{print $2}&amp;#39; example.log Or a bash script that analyzes each row and then selects only those of interest.</description>
     </item>
     
     <item>

@@ -17,7 +17,7 @@
     
     <meta name="description" property="og:description" content="Task report In the life of every system manager, sooner or later it has happened to do reporting, or by collecting data from logs, databases as diverse as LDAP servers.
 The thing you will surely have done is to collect data manually, using tools like grep and awk for configuration files and logs.
-$ cat example.log | grep &#39;ERROR&#39; $ awk &#39;{print $2}&#39; example.log Or a bash script that analyzes each row and then selects only those of interest.|">
+$ cat example.log | grep &amp;#39;ERROR&amp;#39; $ awk &amp;#39;{print $2}&amp;#39; example.log Or a bash script that analyzes each row and then selects only those of interest.|">
     
 
     <meta name="apple-mobile-web-app-title" content="DevOps journey">
@@ -134,20 +134,20 @@ $ cat example.log | grep &#39;ERROR&#39; $ awk &#39;{print $2}&#39; example.log 
 <h2 id="task-report">Task report</h2>
 <p>In the life of every system manager, sooner or later it has happened to do reporting, or by collecting data from <em>logs</em>, <em>databases</em> as diverse as <em>LDAP</em> servers.</p>
 <p>The thing you will surely have done is to collect data manually, using tools like <code>grep</code> and <code>awk</code> for configuration files and logs.</p>
-<pre><code class="language-console" data-lang="console">$ cat example.log | grep 'ERROR'
-$ awk '{print $2}' example.log
-</code></pre><p>Or a <code>bash</code> script that analyzes each row and then selects only those of interest. But sometimes, the logs don&rsquo;t have the same format, or there is a need for a multiple log provider or worse, multiple sources.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="gp">$ </span>cat example.log <span class="p">|</span> grep <span class="s1">&#39;ERROR&#39;</span>
+<span class="gp">$ </span>awk <span class="s1">&#39;{print $2}&#39;</span> example.log
+</code></pre></div><p>Or a <code>bash</code> script that analyzes each row and then selects only those of interest. But sometimes, the logs don&rsquo;t have the same format, or there is a need for a multiple log provider or worse, multiple sources.</p>
 <p>These are excellent techniques but it really takes a long time to write such complex scripts and above all, if the formats were to change one day, put our scripts back in hand.</p>
 <p>Ok, but then how to do it?</p>
 <h2 id="pyreports">Pyreports</h2>
 <p>Again, <em>Python</em> comes to our aid. With the <a href="https://github.com/MatteoGuadrini/pyreports"><strong>pyreports</strong></a> module it is possible to carry out simple and complex reports, from one source or with multiple sources. Any data you can extract from a file or database (including LDAP) with <em>pyreports</em> is possible. In addition, this tool also offers utilities for data processing. But let&rsquo;s see in detail how it can help us.</p>
-<pre><code class="language-console" data-lang="console">$ pip install pyreports		# for installation
-</code></pre><h3 id="datasets">Datasets</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="gp">$ </span>pip install pyreports		<span class="c1"># for installation</span>
+</code></pre></div><h3 id="datasets">Datasets</h3>
 <p><em>Pyreports</em> treats the data in object <a href="https://tablib.readthedocs.io/en/stable/"><strong>dataset</strong></a>, to simplify the manipulation of the same.
 To do this, it has two core objects that are used for data extraction and processing. First of all, we extract data from a source thanks to the <em>Manager</em> objects.</p>
 <h3 id="managers">Managers</h3>
 <p><strong>Managers</strong> can be of three types: database, file and LDAP. Each type of manager can implement different functionalities for extracting data. Let&rsquo;s go through each manager to see how to extract the data:</p>
-<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">pyreports</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">pyreports</span>
 
 <span class="c1"># DatabaseManager object</span>
 <span class="n">sqllite_db</span> <span class="o">=</span> <span class="n">pyreports</span><span class="o">.</span><span class="n">manager</span><span class="p">(</span><span class="s1">&#39;sqllite&#39;</span><span class="p">,</span> <span class="n">database</span><span class="o">=</span><span class="s1">&#39;/tmp/mydb.db&#39;</span><span class="p">)</span>
@@ -156,21 +156,21 @@ To do this, it has two core objects that are used for data extraction and proces
 <span class="n">postgresql_db</span> <span class="o">=</span> <span class="n">pyreports</span><span class="o">.</span><span class="n">manager</span><span class="p">(</span><span class="s1">&#39;postgresql&#39;</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="s1">&#39;postgresql1.local&#39;</span><span class="p">,</span> <span class="n">database</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="s1">&#39;dba&#39;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s1">&#39;dba0000&#39;</span><span class="p">)</span>
 
 <span class="c1"># FileManager object</span>
-<span class="nb">file</span> <span class="o">=</span> <span class="n">pyreports</span><span class="o">.</span><span class="n">manager</span><span class="p">(</span><span class="s1">&#39;file&#39;</span><span class="p">,</span> <span class="s1">&#39;/tmp/log.log&#39;</span><span class="p">)</span>
+<span class="n">file</span> <span class="o">=</span> <span class="n">pyreports</span><span class="o">.</span><span class="n">manager</span><span class="p">(</span><span class="s1">&#39;file&#39;</span><span class="p">,</span> <span class="s1">&#39;/tmp/log.log&#39;</span><span class="p">)</span>
 <span class="n">csv</span> <span class="o">=</span> <span class="n">pyreports</span><span class="o">.</span><span class="n">manager</span><span class="p">(</span><span class="s1">&#39;csv&#39;</span><span class="p">,</span> <span class="s1">&#39;/tmp/csv.csv&#39;</span><span class="p">)</span>
 <span class="n">json</span> <span class="o">=</span> <span class="n">pyreports</span><span class="o">.</span><span class="n">manager</span><span class="p">(</span><span class="s1">&#39;json&#39;</span><span class="p">,</span> <span class="s1">&#39;/tmp/json.json&#39;</span><span class="p">)</span>
 <span class="n">yaml</span> <span class="o">=</span> <span class="n">pyreports</span><span class="o">.</span><span class="n">manager</span><span class="p">(</span><span class="s1">&#39;yaml&#39;</span><span class="p">,</span> <span class="s1">&#39;/tmp/yaml.yml&#39;</span><span class="p">)</span>
 <span class="n">xlsx</span> <span class="o">=</span> <span class="n">pyreports</span><span class="o">.</span><span class="n">manager</span><span class="p">(</span><span class="s1">&#39;xlsx&#39;</span><span class="p">,</span> <span class="s1">&#39;/tmp/xlsx.xlsx&#39;</span><span class="p">)</span>
 
 <span class="c1"># LdapManager object</span>
-<span class="n">ldap</span> <span class="o">=</span> <span class="n">pyreports</span><span class="o">.</span><span class="n">manager</span><span class="p">(</span><span class="s1">&#39;ldap&#39;</span><span class="p">,</span> <span class="n">server</span><span class="o">=</span><span class="s1">&#39;ldap.local&#39;</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s1">&#39;password&#39;</span><span class="p">,</span> <span class="n">ssl</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">tls</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">ldap</span> <span class="o">=</span> <span class="n">pyreports</span><span class="o">.</span><span class="n">manager</span><span class="p">(</span><span class="s1">&#39;ldap&#39;</span><span class="p">,</span> <span class="n">server</span><span class="o">=</span><span class="s1">&#39;ldap.local&#39;</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s1">&#39;password&#39;</span><span class="p">,</span> <span class="n">ssl</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">tls</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div><p>Once we have a dataset, we move on to data processing, through an <em>Executor</em>.</p>
 <h3 id="executors">Executors</h3>
 <p><strong>Executor</strong> objects are built with a python base or a dataset.
 Once we have an Executor object, we can apply filters and data mappings. Here is an example for our database: explanation
 However, we haven&rsquo;t extracted the data to any files yet. Let&rsquo;s create an additional manager object to save the data to an output file.</p>
 <p>In a few lines we have created an effective reporting script, readable and not susceptible to changes in the original data structure.</p>
-<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">pyreports</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">pyreports</span>
 
 <span class="c1"># Create a data source</span>
 <span class="n">mydb</span> <span class="o">=</span> <span class="n">pyreports</span><span class="o">.</span><span class="n">manager</span><span class="p">(</span><span class="s1">&#39;mysql&#39;</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="s1">&#39;mysql1.local&#39;</span><span class="p">,</span> <span class="n">database</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="s1">&#39;dba&#39;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s1">&#39;dba0000&#39;</span><span class="p">)</span>
@@ -188,7 +188,7 @@ Let&rsquo;s see how it works.</p>
 <blockquote>
 <p>The Report object provides an interface for a complete workflow-based report (see <a href="https://pyreports.readthedocs.io/en/latest/index.html#workflow">Report workflow</a>).</p>
 </blockquote>
-<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">pyreports</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">pyreports</span>
 <span class="kn">import</span> <span class="nn">tablib</span>
 
 <span class="c1"># Instantiate a simple Report object</span>
@@ -197,14 +197,14 @@ Let&rsquo;s see how it works.</p>
 
 <span class="c1"># View report</span>
 <span class="n">myrep</span>           <span class="c1"># repr(myrep)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">myrep</span><span class="p">)</span>    <span class="c1"># str(myrep)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">myrep</span><span class="p">)</span>    <span class="c1"># str(myrep)</span>
 </code></pre></div><p>There is another object that is used to collect <em>Report</em> objects and automate in turn many data processing processes in a single excel file with multiple sheets. This object is <strong>ReportBook</strong>.
 As the official documentation says, the ReportBook objects are:</p>
 <blockquote>
 <p>The ReportBook object is a collection (list) of Report objects. This basically allows you to collect multiple reports in a single container object. The main advantage is the ability to iterate over each Report and access its properties.
 Let&rsquo;s see how it works below.</p>
 </blockquote>
-<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">pyreports</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">pyreports</span>
 <span class="kn">import</span> <span class="nn">tablib</span>
 
 <span class="c1"># Instantiate the Report objects</span>
@@ -217,7 +217,7 @@ Let&rsquo;s see how it works below.</p>
 
 <span class="c1"># View ReportBook</span>
 <span class="n">salary</span>           <span class="c1"># repr(salary)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span>    <span class="c1"># str(salary)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span>    <span class="c1"># str(salary)</span>
 </code></pre></div><h2 id="conclusion">Conclusion</h2>
 <p>Also in this case, simplicity wins over complexity; if you need to perform simple reporting do not hesitate, use <em>bash</em>, <em>awk</em>, <em>sed</em> and all the command line tools that are easy to use.
 But if you have to work on multiple databases, crossing them, processing them and filtering them, then python and pyreports meet our needs, simplifying our work.

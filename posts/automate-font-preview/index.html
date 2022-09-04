@@ -157,33 +157,33 @@ It&rsquo;s fine for a single preview, but for many, it gets cumbersome.</p>
 <h3 id="develop-a-simple-previewer">Develop a simple previewer</h3>
 <p>First, let&rsquo;s read the <a href="https://fontpreview.readthedocs.io/en/latest/">documentation</a> and install the package. We understand from it that there are various objects that could do for us.</p>
 <p>The <code>FontPreview</code> object is just right for us. Let&rsquo;s see how to create a preview of a font in just three lines of code.</p>
-<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">fontpreview</span> <span class="kn">import</span> <span class="n">FontPreview</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">fontpreview</span> <span class="kn">import</span> <span class="n">FontPreview</span>
 <span class="n">fp</span> <span class="o">=</span> <span class="n">FontPreview</span><span class="p">(</span><span class="s1">&#39;/tmp/noto.ttf&#39;</span><span class="p">)</span>   <span class="c1"># path of font file</span>
 <span class="n">fp</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;/tmp/fp.png&#39;</span><span class="p">)</span>              <span class="c1"># default directory is working directory</span>
 </code></pre></div><p>In this way, however, we have obtained a preview without customizations, which means that we have equaled the other tools mentioned above.</p>
 <p>But this object allows a series of customizations that are right for us. Now let&rsquo;s modify our script, so that the background color is blue while the font color is yellow and the sentence as we want it. Also, we can set a default folder <code>/home/font_previews</code>, so that every font we put in it will create a preview.</p>
-<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">fontpreview</span> <span class="kn">import</span> <span class="n">FontPreview</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">fontpreview</span> <span class="kn">import</span> <span class="n">FontPreview</span>
 <span class="kn">import</span> <span class="nn">os</span>
 
 <span class="n">FONT_PATH</span> <span class="o">=</span> <span class="s1">&#39;/home/font_previews&#39;</span>
 
-<span class="k">for</span> <span class="nb">file</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">FONT_PATH</span><span class="p">):</span>
-	<span class="n">font_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">FONT_PATH</span><span class="p">,</span> <span class="nb">file</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">FONT_PATH</span><span class="p">):</span>
+	<span class="n">font_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">FONT_PATH</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
 	<span class="n">fp</span> <span class="o">=</span> <span class="n">FontPreview</span><span class="p">(</span><span class="n">font_file</span><span class="p">,</span>
                 	<span class="n">font_size</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
                 	<span class="n">font_text</span><span class="o">=</span><span class="s1">&#39;My personal preview&#39;</span><span class="p">,</span>
                 	<span class="n">bg_color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span>
                 	<span class="n">fg_color</span><span class="o">=</span><span class="s1">&#39;yellow&#39;</span><span class="p">)</span>
-	<span class="n">fp</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;/tmp/{file}.png&#39;</span><span class="p">)</span>
+	<span class="n">fp</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;/tmp/</span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s1">.png&#39;</span><span class="p">)</span>
 </code></pre></div><p>Now, we can run 100 font previews in less than two seconds.
 Let&rsquo;s save this file as <code>blue-yellow-font-previewer.py</code> and try it on the command line.</p>
-<pre><code class="language-console" data-lang="console">$ python3 blue-yellow-font-previewer.py
-</code></pre><h3 id="more-complex-preview">More complex preview</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="gp">$ </span>python3 blue-yellow-font-previewer.py
+</code></pre></div><h3 id="more-complex-preview">More complex preview</h3>
 <p>This library not only has objects for previewing fonts, but also special objects for advanced image composition based on fonts.</p>
 <p>Let&rsquo;s imagine that some designers give us indications of color, size, background images and other information about the final project. With this library we can really range in any type of layout.</p>
 <p>A complex and fascinating example is reproducing the preview of the Fira Code font that can be seen on the official GitHub page <a href="https://github.com/tonsky/FiraCode#fira-code-free-monospaced-font-with-programming-ligatures">Fira Code preview</a>.</p>
 <p>Let&rsquo;s see how to code this preview with the <code>fontpreview</code> module.</p>
-<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">fontpreview</span> <span class="kn">import</span> <span class="n">FontBanner</span><span class="p">,</span> <span class="n">FontWall</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">fontpreview</span> <span class="kn">import</span> <span class="n">FontBanner</span><span class="p">,</span> <span class="n">FontWall</span>
 <span class="n">fira_code</span> <span class="o">=</span> <span class="s1">&#39;/tmp/firacode.ttf&#39;</span>
 <span class="c1"># RGB group = (&#39;background&#39;, &#39;FIRA COD color&#39;, &#39;Ligature color&#39;, &#39;E color background&#39;)</span>
 <span class="n">colors_group</span> <span class="o">=</span> <span class="p">[</span>
@@ -239,7 +239,7 @@ Let&rsquo;s save this file as <code>blue-yellow-font-previewer.py</code> and try
 <p><img src="https://camo.githubusercontent.com/9910818ef554c1702299980c6a0f6c9bef3fe587915cc2f7baca49767dd306c5/68747470733a2f2f692e6962622e636f2f63766e505264422f666972612d636f64652e706e67" alt="fira-code-fontwall"></p>
 <h3 id="command-line-preview">Command line preview</h3>
 <p>This package also comes with a simple command line tool that is used to make simple previews. Of course, if placed in the right context, such as a bash loop, it is possible to run several previews with a single script.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/bash
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/bash
 </span><span class="cp"></span><span class="k">for</span> filename in <span class="k">$(</span>/home/font_previews/*<span class="k">)</span><span class="p">;</span> <span class="k">do</span>
     fp -t <span class="s2">&#34;My personal preview&#34;</span> -b <span class="s2">&#34;blue&#34;</span> -f <span class="s2">&#34;yellow&#34;</span> -z <span class="m">50</span> -s <span class="s2">&#34;/tmp/</span><span class="si">${</span><span class="nv">filename</span><span class="si">}</span><span class="s2">.png&#34;</span> /home/font_previews/<span class="nv">$filename</span>
 <span class="k">done</span>

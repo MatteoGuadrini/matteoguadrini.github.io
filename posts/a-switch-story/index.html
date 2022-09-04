@@ -130,7 +130,7 @@ case EXPRESSION in PATTERN_1) STATEMENTS ;; PATTERN_2) STATEMENTS ;; PATTERN_N) 
 <p>The <em>switch</em> is a statement that evaluates the accuracy or similarity of the value of a certain input.
 But isn&rsquo;t that the same thing that the <em>if</em> statement does?
 Let&rsquo;s see this statement starting with <strong>bash</strong> scripting language.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="k">case</span> EXPRESSION in
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="k">case</span> EXPRESSION in
 
   PATTERN_1<span class="o">)</span>
     STATEMENTS
@@ -152,7 +152,7 @@ Let&rsquo;s see this statement starting with <strong>bash</strong> scripting lan
 <p>So given an <strong>EXPRESSION</strong>, I evaluate the <strong>PATTERN</strong> cases and if they don&rsquo;t fit into the latter, the default <strong>*</strong> comes into play. Simple. Let&rsquo;s see her at work.</p>
 <h2 id="switch-work">Switch, work!</h2>
 <p>Which fruit do you want?</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">echo</span> -n <span class="s2">&#34;Enter the name of a fruit &#34;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">echo</span> -n <span class="s2">&#34;Enter the name of a fruit &#34;</span>
 <span class="nb">read</span> FRUIT
 
 <span class="nb">echo</span> -n <span class="s2">&#34;The </span><span class="nv">$FRUIT</span><span class="s2"> is &#34;</span>
@@ -179,7 +179,7 @@ Let&rsquo;s see this statement starting with <strong>bash</strong> scripting lan
 <h2 id="switch-in-other-languages">Switch in other languages</h2>
 <p>In other languages such as Java and .NET C#, the switch case is a bit more complicated. However, compared to the simplicity of the bash case, the purpose is clear.
 An example in <strong>Java</strong>.</p>
-<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">FruitSelector</span>  
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">FruitSelector</span>  
 <span class="o">{</span> 
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> 
     <span class="o">{</span> 
@@ -205,7 +205,7 @@ An example in <strong>Java</strong>.</p>
     <span class="o">}</span> 
 <span class="o">}</span> 
 </code></pre></div><p>And one in <strong>C#</strong>.</p>
-<div class="highlight"><pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
 
 <span class="k">public</span> <span class="k">class</span> <span class="nc">FruitSelector</span>
 <span class="p">{</span>
@@ -242,15 +242,15 @@ A <a href="https://www.python.org/dev/peps/pep-3103/">PEP 3103</a> has been eval
 </blockquote>
 <p>As I was reflecting above, the switch case is very similar to the if statement.
 An early form of switch in python could be given by <strong>if/elif/else</strong> statements.</p>
-<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">fruit</span> <span class="o">=</span> <span class="s2">&#34;banana&#34;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">fruit</span> <span class="o">=</span> <span class="s2">&#34;banana&#34;</span>
 <span class="k">if</span> <span class="n">fruit</span> <span class="o">==</span> <span class="s2">&#34;apple&#34;</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&#34;The fruit is apple&#34;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;The fruit is apple&#34;</span><span class="p">)</span>
 <span class="k">elif</span> <span class="n">fruit</span> <span class="o">==</span> <span class="s2">&#34;banana&#34;</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&#34;The fruit is banana&#34;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;The fruit is banana&#34;</span><span class="p">)</span>
 <span class="k">elif</span> <span class="n">fruit</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&#34;blueberries&#34;</span><span class="p">,</span> <span class="s2">&#34;raspberries&#34;</span><span class="p">,</span> <span class="s2">&#34;blue currant&#34;</span><span class="p">,</span> <span class="s2">&#34;currant&#34;</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&#34;The fruit is berries&#34;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;The fruit is berries&#34;</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&#34;The fruit is unknown&#34;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;The fruit is unknown&#34;</span><span class="p">)</span>
 </code></pre></div><p>This is simple to both read and understand. But it&rsquo;s still not a switch statement. The switch evaluates the accuracy but also the similarity of a word.
 There is an object in python which acts as a selector. Not for nothing have the two classes written in Java and C# above called &ldquo;<em>Selector</em>&rdquo;.</p>
 <p>A selector evaluates an <strong>EXPRESSION</strong>, takes its value and checks the accuracy of the <strong>PATTERN</strong>, otherwise, it returns a default value (<strong>*</strong>).
@@ -259,7 +259,7 @@ The dictionary object is a kind of selector:</p>
 <p>A mapping object maps hashable values to arbitrary objects. Mappings are mutable objects. There is currently only one standard mapping type, the dictionary.</p>
 </blockquote>
 <p>Being based on hash indexes, it is much faster in retrieving values. Let&rsquo;s try to create our selector.</p>
-<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">myfruit</span> <span class="o">=</span> <span class="s2">&#34;banana&#34;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">myfruit</span> <span class="o">=</span> <span class="s2">&#34;banana&#34;</span>
 <span class="n">fruits</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&#34;apple&#34;</span><span class="p">:</span> <span class="s2">&#34;The fruit is apple&#34;</span><span class="p">,</span>
     <span class="s2">&#34;banana&#34;</span><span class="p">:</span> <span class="s2">&#34;The fruit is banana&#34;</span><span class="p">,</span>
@@ -268,13 +268,13 @@ The dictionary object is a kind of selector:</p>
     <span class="s2">&#34;blue currant&#34;</span><span class="p">:</span> <span class="s2">&#34;The fruit is berries&#34;</span><span class="p">,</span>
     <span class="s2">&#34;currant&#34;</span><span class="p">:</span> <span class="s2">&#34;The fruit is berries&#34;</span>
 <span class="p">}</span>
-<span class="k">print</span><span class="p">(</span><span class="n">fruits</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">myfruit</span><span class="p">,</span> <span class="s2">&#34;The fruit is unknown&#34;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">myfruit</span><span class="p">,</span> <span class="s2">&#34;The fruit is unknown&#34;</span><span class="p">))</span>
 </code></pre></div><p>In this way, we made our switch selector, beautiful and &ldquo;<em>pythonic</em>&rdquo;. But still, the exactness but also the similarity of a word is not evaluated.</p>
 <h2 id="can-it-be-improved">Can it be improved?</h2>
 <p>Yes, of course!
 Let&rsquo;s now create a function that will act as a selector, as we&rsquo;ve seen done in Java and C#.
 There is a python builtin that applies filters. The function is called <em>filter</em>. Apply a function to an iterable. Functions such as terables are python objects and can be assigned as arguments to other functions. Also, our fruit selector (dictionary) is an iterable. We just need a function that evaluates the similarity of the keys.</p>
-<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">FruitSelector</span><span class="p">(</span><span class="n">fruit</span><span class="p">):</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">FruitSelector</span><span class="p">(</span><span class="n">fruit</span><span class="p">):</span>
     <span class="n">fruits</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s2">&#34;apple&#34;</span><span class="p">:</span> <span class="s2">&#34;The fruit is apple&#34;</span><span class="p">,</span>
         <span class="s2">&#34;banana&#34;</span><span class="p">:</span> <span class="s2">&#34;The fruit is banana&#34;</span><span class="p">,</span>
@@ -292,7 +292,7 @@ There is a python builtin that applies filters. The function is called <em>filte
 We will transform our selector into a switch, with an added value: the cache of the last selected fruit.
 In python everything is an object and therefore can be treated as such.
 If we wanted to abstract our selector even more to make it become a switch in effect, that&rsquo;s it:</p>
-<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">switch</span><span class="p">(</span><span class="n">match</span><span class="p">,</span> <span class="n">dictionary</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&#34;no match&#34;</span><span class="p">):</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">switch</span><span class="p">(</span><span class="n">match</span><span class="p">,</span> <span class="n">dictionary</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&#34;no match&#34;</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
         <span class="k">if</span> <span class="n">match</span> <span class="ow">in</span> <span class="n">key</span><span class="p">:</span>
             <span class="n">switch</span><span class="o">.</span><span class="n">last_match</span> <span class="o">=</span> <span class="n">key</span>
@@ -314,7 +314,7 @@ If we wanted to abstract our selector even more to make it become a switch in ef
 </code></pre></div><h2 id="a-callable-switch">A callable switch</h2>
 <p>Also, since functions in python are objects, it is possible to replace string values of the dictionary with functions and return them if the keys match, in this way, can be called. A very simple example.
 In effect, that&rsquo;s it:</p>
-<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">switch</span><span class="p">(</span><span class="n">match</span><span class="p">,</span> <span class="n">dictionary</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&#34;no match&#34;</span><span class="p">):</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">switch</span><span class="p">(</span><span class="n">match</span><span class="p">,</span> <span class="n">dictionary</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&#34;no match&#34;</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
         <span class="k">if</span> <span class="n">match</span> <span class="ow">in</span> <span class="n">key</span><span class="p">:</span>
             <span class="n">switch</span><span class="o">.</span><span class="n">last_match</span> <span class="o">=</span> <span class="n">key</span>

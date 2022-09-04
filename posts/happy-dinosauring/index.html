@@ -133,107 +133,107 @@ Other tools are used &amp;hellip; well, practically nothing, except to elicit a 
 <h3 id="print-dinosaur">Print dinosaur</h3>
 <p>Basically, <em>dinosay</em> is useless except to print dinosaurs on the terminal with a message.</p>
 <p>Follow this for installation:</p>
-<pre><code class="language-console" data-lang="console">$ pip install dinosay       # for python enviroment
-
-$ dnf copr enable matteoguadrini/dinosay
-$ dnf install python-dinosay -y    # for Red Hat, CentOS, Mageia and fedora
-$ wget https://github.com/MatteoGuadrini/dinosay/releases/download/&lt;version&gt;/dinosay-&lt;version&gt;-1.noarch.rpm -O dinosay.rpm
-$ yast -i dinosay.rpm       # for SLES and OpenSUSE
-
-$ git clone https://github.com/MatteoGuadrini/dinosay.git &amp;&amp; cd dinosay
-$ python setup.py install   # for other
-</code></pre><p>However, before using it, you need to understand how it works. Let&rsquo;s take a look at its usage:</p>
-<pre><code class="language-console" data-lang="console">$ dinosay -h 
-usage: dinosay [-h] [--version] (-d DINOSAUR | -r | -f FILE | -l) [-c COLOR]
-               [-b BEHAVIOR] [-i] [-t] [-e EYE] [-w WRAP]
-               [message]
-
-print messages via ASCII dinosaurs
-
-positional arguments:
-  message               message to print
-
-optional arguments:
-  -h, --help            show this help message and exit
-  --version, -v         show program's version number and exit
-  -d DINOSAUR, --dinosaur DINOSAUR
-                        dinosaur to print
-  -r, --random          random dinosaur to print
-  -f FILE, --file FILE  file containing ASCII to print
-  -l, --list            list of all dinosaurs and parts
-  -c COLOR, --color COLOR
-                        color dinosaur
-  -b BEHAVIOR, --behavior BEHAVIOR
-                        behavior of dinosaur
-  -i, --idea            idea's speech bubble
-  -t, --tongue          shape of the tongue
-  -e EYE, --eye EYE     shape of the eye
-  -w WRAP, --wrap WRAP  length of the message
-
- _____     __     __   __     ______     ______     ______     __  __   
-/\  __-.  /\ \   /\ &quot;-.\ \   /\  __ \   /\  ___\   /\  __ \   /\ \_\ \  
-\ \ \/\ \ \ \ \  \ \ \-.  \  \ \ \/\ \  \ \___  \  \ \  __ \  \ \____ \ 
- \ \____-  \ \_\  \ \_\\&quot;\_\  \ \_____\  \/\_____\  \ \_\ \_\  \/\_____\
-  \/____/   \/_/   \/_/ \/_/   \/_____/   \/_____/   \/_/\/_/   \/_____/ 
-
-</code></pre><p>Okay, so first we should know the dinosaur names or aliases to get started.</p>
-<pre><code class="language-console" data-lang="console">$ dinosay -l				# or &quot;dinolist&quot;
-DINOSAY list elements and dinosaurs
-===================================
-
-DINOSAURS - ALIAS:          BEHAVIOR:      EYE:                 COLORS: 
-- tyrannosaurus - trex      - normal       - classic:  O O      - purple
-- dimetrodon - dim          - happy        - borg:     = =      - cyan   
-- ankylosaur - anky         - joking       - stoned:   * *      - darkcyan     
-- hypsilophodon - hypsi     - lazy         - glass:    0-0      - blue     
-- stegosaurus - stego       - tired        - hypno:    @ @      - green     
-- deinonychus - deino       - nerd         - rage:     ° °      - yellow     
-- pterodactyl - ptero       - cyborg       - ko:       x x      - red     
-- archaeopteryx - archa     - dead         - happy:    ^ ^      - default     
-- maiasaur - maia           - trance       - closed:   - -     
-- pleisiosaur - plei        - stoned
-- brachiosaur - brachio
-- corythosaur - cory
-- parasaurolophus - para
-- triceratops - trice
-</code></pre><p>Now, print a test <em>trex</em> dinosaur:</p>
-<pre><code class="language-console" data-lang="console">$ dinosay -d trex
-</code></pre><p>Without message, <strong>dinosay</strong> print a default message <em>&ldquo;Rooooaaaaarrrr&rdquo;</em>!</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="gp">$ </span>pip install dinosay       <span class="c1"># for python enviroment</span>
+<span class="err">
+</span><span class="err"></span><span class="gp">$ </span>dnf copr <span class="nb">enable</span> matteoguadrini/dinosay
+<span class="gp">$ </span>dnf install python-dinosay -y    <span class="c1"># for Red Hat, CentOS, Mageia and fedora</span>
+<span class="gp">$ </span>wget https://github.com/MatteoGuadrini/dinosay/releases/download/&lt;version&gt;/dinosay-&lt;version&gt;-1.noarch.rpm -O dinosay.rpm
+<span class="gp">$ </span>yast -i dinosay.rpm       <span class="c1"># for SLES and OpenSUSE</span>
+<span class="err">
+</span><span class="err"></span><span class="gp">$ </span>git clone https://github.com/MatteoGuadrini/dinosay.git <span class="o">&amp;&amp;</span> <span class="nb">cd</span> dinosay
+<span class="gp">$ </span>python setup.py install   <span class="c1"># for other</span>
+</code></pre></div><p>However, before using it, you need to understand how it works. Let&rsquo;s take a look at its usage:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="gp">$ </span>dinosay -h 
+<span class="go">usage: dinosay [-h] [--version] (-d DINOSAUR | -r | -f FILE | -l) [-c COLOR]
+</span><span class="go">               [-b BEHAVIOR] [-i] [-t] [-e EYE] [-w WRAP]
+</span><span class="go">               [message]
+</span><span class="go"></span><span class="err">
+</span><span class="err"></span><span class="go">print messages via ASCII dinosaurs
+</span><span class="go"></span><span class="err">
+</span><span class="err"></span><span class="go">positional arguments:
+</span><span class="go">  message               message to print
+</span><span class="go"></span><span class="err">
+</span><span class="err"></span><span class="go">optional arguments:
+</span><span class="go">  -h, --help            show this help message and exit
+</span><span class="go">  --version, -v         show program&#39;s version number and exit
+</span><span class="go">  -d DINOSAUR, --dinosaur DINOSAUR
+</span><span class="go">                        dinosaur to print
+</span><span class="go">  -r, --random          random dinosaur to print
+</span><span class="go">  -f FILE, --file FILE  file containing ASCII to print
+</span><span class="go">  -l, --list            list of all dinosaurs and parts
+</span><span class="go">  -c COLOR, --color COLOR
+</span><span class="go">                        color dinosaur
+</span><span class="go">  -b BEHAVIOR, --behavior BEHAVIOR
+</span><span class="go">                        behavior of dinosaur
+</span><span class="go">  -i, --idea            idea&#39;s speech bubble
+</span><span class="go">  -t, --tongue          shape of the tongue
+</span><span class="go">  -e EYE, --eye EYE     shape of the eye
+</span><span class="go">  -w WRAP, --wrap WRAP  length of the message
+</span><span class="go"></span><span class="err">
+</span><span class="err"></span><span class="go"> _____     __     __   __     ______     ______     ______     __  __   
+</span><span class="go">/\  __-.  /\ \   /\ &#34;-.\ \   /\  __ \   /\  ___\   /\  __ \   /\ \_\ \  
+</span><span class="go">\ \ \/\ \ \ \ \  \ \ \-.  \  \ \ \/\ \  \ \___  \  \ \  __ \  \ \____ \ 
+</span><span class="go"> \ \____-  \ \_\  \ \_\\&#34;\_\  \ \_____\  \/\_____\  \ \_\ \_\  \/\_____\
+</span><span class="go">  \/____/   \/_/   \/_/ \/_/   \/_____/   \/_____/   \/_/\/_/   \/_____/ 
+</span><span class="go"></span><span class="err">
+</span></code></pre></div><p>Okay, so first we should know the dinosaur names or aliases to get started.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="gp">$ </span>dinosay -l				<span class="c1"># or &#34;dinolist&#34;</span>
+<span class="go">DINOSAY list elements and dinosaurs
+</span><span class="go">===================================
+</span><span class="go"></span><span class="err">
+</span><span class="err"></span><span class="go">DINOSAURS - ALIAS:          BEHAVIOR:      EYE:                 COLORS: 
+</span><span class="go">- tyrannosaurus - trex      - normal       - classic:  O O      - purple
+</span><span class="go">- dimetrodon - dim          - happy        - borg:     = =      - cyan   
+</span><span class="go">- ankylosaur - anky         - joking       - stoned:   * *      - darkcyan     
+</span><span class="go">- hypsilophodon - hypsi     - lazy         - glass:    0-0      - blue     
+</span><span class="go">- stegosaurus - stego       - tired        - hypno:    @ @      - green     
+</span><span class="go">- deinonychus - deino       - nerd         - rage:     ° °      - yellow     
+</span><span class="go">- pterodactyl - ptero       - cyborg       - ko:       x x      - red     
+</span><span class="go">- archaeopteryx - archa     - dead         - happy:    ^ ^      - default     
+</span><span class="go">- maiasaur - maia           - trance       - closed:   - -     
+</span><span class="go">- pleisiosaur - plei        - stoned
+</span><span class="go">- brachiosaur - brachio
+</span><span class="go">- corythosaur - cory
+</span><span class="go">- parasaurolophus - para
+</span><span class="go">- triceratops - trice
+</span></code></pre></div><p>Now, print a test <em>trex</em> dinosaur:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="gp">$ </span>dinosay -d trex
+</code></pre></div><p>Without message, <strong>dinosay</strong> print a default message <em>&ldquo;Rooooaaaaarrrr&rdquo;</em>!</p>
 <h3 id="change-dinosaur">Change dinosaur</h3>
 <p>To change dinosaur, just write its name or alias as the argument of the <em>-d</em> parameter:</p>
-<pre><code class="language-console" data-lang="console">$ dinosay -d dim &quot;I'm a dimetrodon!&quot;
-$ dinosay -d maia &quot;Now, I'm maiasaur&quot;
-</code></pre><p>There is a random mode that chooses the dinosaur for you. Just specify the <em>-r</em> parameter:</p>
-<pre><code class="language-console" data-lang="console">$ dinosay -r &quot;Woooooooo...I'm...???&quot;
-</code></pre><h3 id="behavior-eyes-and-tongue">Behavior, eyes and tongue</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="gp">$ </span>dinosay -d dim <span class="s2">&#34;I&#39;m a dimetrodon!&#34;</span>
+<span class="gp">$ </span>dinosay -d maia <span class="s2">&#34;Now, I&#39;m maiasaur&#34;</span>
+</code></pre></div><p>There is a random mode that chooses the dinosaur for you. Just specify the <em>-r</em> parameter:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="gp">$ </span>dinosay -r <span class="s2">&#34;Woooooooo...I&#39;m...???&#34;</span>
+</code></pre></div><h3 id="behavior-eyes-and-tongue">Behavior, eyes and tongue</h3>
 <p>It is possible to change some elements of each printed dinosaur. It is possible to change the balloon containing the message via the parameter <em>-b</em> which controls the behavior of the dinosaur.
 The list of behaviors can be obtained via the <code>dinolist</code> command:</p>
-<pre><code class="language-console" data-lang="console">$ dinosay -d trex -b happy &quot;I'm happy!&quot;
-</code></pre><p>This command modifies both the <code>$eye</code> variable and the comic.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="gp">$ </span>dinosay -d trex -b happy <span class="s2">&#34;I&#39;m happy!&#34;</span>
+</code></pre></div><p>This command modifies both the <code>$eye</code> variable and the comic.</p>
 <p>To change only the $ eye element instead, just look at the types of eyes available in the dinolist command to specify them in the <em>-e</em> parameter:</p>
-<pre><code class="language-console" data-lang="console">$ dinosay -d trice -e glass &quot;I have a glass!&quot;
-</code></pre><p>Language can also be added for some dinosaurs. Test this dinosaur by specifying the <em>-t</em> command as well:</p>
-<pre><code class="language-console" data-lang="console">$ dinosay -d maya -t &quot;Bleeeeehhhhhh!&quot;
-</code></pre><p>If you want to give your dinosaur a &ldquo;thinking&rdquo; look, just specify the <em>-i</em> (idea) parameter to make a comic appear as if it were thinking:</p>
-<pre><code class="language-console" data-lang="console">$ dinosay -d plei -i &quot;I thinking about...dinosay!&quot;
-</code></pre><h3 id="color-everything">Color everything</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="gp">$ </span>dinosay -d trice -e glass <span class="s2">&#34;I have a glass!&#34;</span>
+</code></pre></div><p>Language can also be added for some dinosaurs. Test this dinosaur by specifying the <em>-t</em> command as well:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="gp">$ </span>dinosay -d maya -t <span class="s2">&#34;Bleeeeehhhhhh!&#34;</span>
+</code></pre></div><p>If you want to give your dinosaur a &ldquo;thinking&rdquo; look, just specify the <em>-i</em> (idea) parameter to make a comic appear as if it were thinking:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="gp">$ </span>dinosay -d plei -i <span class="s2">&#34;I thinking about...dinosay!&#34;</span>
+</code></pre></div><h3 id="color-everything">Color everything</h3>
 <p>There is a special parameter that allows you to take advantage of the console colors to add that extra touch to your ASCII dinosaur. Test your dinosay commands with <em>-c</em>:</p>
-<pre><code class="language-console" data-lang="console">$ dinosay -r -c cyan
-$ dinosay -r -c darkcyan
-$ dinosay -r -c blue
-$ dinosay -r -c red
-$ dinosay -r -c yellow
-$ dinosay -r -c green
-$ dinosay -r -c purple
-</code></pre><h3 id="wrap-text-message">Wrap text message</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="gp">$ </span>dinosay -r -c cyan
+<span class="gp">$ </span>dinosay -r -c darkcyan
+<span class="gp">$ </span>dinosay -r -c blue
+<span class="gp">$ </span>dinosay -r -c red
+<span class="gp">$ </span>dinosay -r -c yellow
+<span class="gp">$ </span>dinosay -r -c green
+<span class="gp">$ </span>dinosay -r -c purple
+</code></pre></div><h3 id="wrap-text-message">Wrap text message</h3>
 <p>If your message is too long, then you can use the <em>-w</em> parameter to delineate the maximum number of characters per column:</p>
-<pre><code class="language-console" data-lang="console">$ dinosay -r -w 20 &quot;This is a long long long long message wrapped in twenty character columns!&quot;
-</code></pre><h3 id="load-a-file">Load a file</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="gp">$ </span>dinosay -r -w <span class="m">20</span> <span class="s2">&#34;This is a long long long long message wrapped in twenty character columns!&#34;</span>
+</code></pre></div><h3 id="load-a-file">Load a file</h3>
 <p>If you would like to build your dinosaur or animal (or whatever you want) in ASCII, you can use the <em>-f</em> parameter to specify your ASCII file. You can also use the variables usable by <code>dinosay</code> in your file to replace eyes, language and message (see the <a href="https://matteoguadrini.github.io/dinosay/">docs</a>:</p>
-<pre><code class="language-console" data-lang="console">$ dinosay -f /home/test_dino/mydino.ascii &quot;My dinosaur!&quot;
-</code></pre><h3 id="dinosay-like-a-python-module">dinosay like a python module</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="gp">$ </span>dinosay -f /home/test_dino/mydino.ascii <span class="s2">&#34;My dinosaur!&#34;</span>
+</code></pre></div><h3 id="dinosay-like-a-python-module">dinosay like a python module</h3>
 <p><code>dinosay</code> is written in python and can also be used in python scripts as an import module.</p>
-<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">dinosay</span> <span class="kn">import</span> <span class="n">dinoprint</span><span class="p">,</span> <span class="n">Dino</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">dinosay</span> <span class="kn">import</span> <span class="n">dinoprint</span><span class="p">,</span> <span class="n">Dino</span>
 <span class="n">body</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&#34;&#34;&#34;
 </span><span class="s2">           __n__n__
 </span><span class="s2">    .------`-\$eyes/-&#39;

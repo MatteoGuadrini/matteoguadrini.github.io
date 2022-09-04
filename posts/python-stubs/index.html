@@ -115,10 +115,10 @@ from typing import Union def stringify(what: Union[int, list, dict]) -&amp;gt; s
 <h2 id="what-is-a-stub-file">What is a stub file?</h2>
 <p>It is a file with the <code>.pyi</code> extension, which describes the Python type information, both input and return for functions and omits the logical part. Using a <strong>stub</strong> file has the following advantages (see <a href="https://www.python.org/dev/peps/pep-0484">PEP 484</a>).</p>
 <p>Example sample.py</p>
-<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">stringify</span><span class="p">(</span><span class="n">what</span><span class="p">):</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">stringify</span><span class="p">(</span><span class="n">what</span><span class="p">):</span>
 	<span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">what</span><span class="p">)</span>
 </code></pre></div><p>Example sample.pyi</p>
-<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span>
 <span class="k">def</span> <span class="nf">stringify</span><span class="p">(</span><span class="n">what</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">list</span><span class="p">,</span> <span class="nb">dict</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span> <span class="o">...</span>
 </code></pre></div><h3 id="advantages">Advantages</h3>
 <p><em>Type</em> information can be added by adding a separate stub file to a third-party library that does not have type annotations. For large modules that have a high load when many type inferences are made, using the minimal stub file that omits the mounting part reduces the load and reduces delays such as completion and check.</p>
@@ -131,10 +131,10 @@ from typing import Union def stringify(what: Union[int, list, dict]) -&amp;gt; s
 <p><em>Stubgen</em> generates draft stubs. The auto-generated stub files often require some manual updates, and most types will default to Any. The stubs will be much more useful if you add more precise type annotations, at least for the most commonly used functionality.</p>
 <p>The rest of this section documents the command line interface of stubgen. Run <code>stubgen --help</code> for a quick summary of options.</p>
 <p>Generate stub file of sample.py</p>
-<pre><code class="language-console" data-lang="console">$ stubgen sample.py
-$ ls
-sample.py sample.pyi
-</code></pre><h2 id="conclusion">Conclusion</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="gp">$ </span>stubgen sample.py
+<span class="gp">$ </span>ls
+<span class="go">sample.py sample.pyi
+</span></code></pre></div><h2 id="conclusion">Conclusion</h2>
 <p>Having a package that contains stub files guarantees two things: the first is that you keep your modules without typing anything, so it is compliant with the python philosophy of not declaring types of functions and variables. The second is to speed up the editors and ide in resolving types.</p>
 <p>Stub files are really a great ally to help you use your library.</p>
 

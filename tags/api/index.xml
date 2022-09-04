@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>api on DevOps journey</title>
+    <link>https://matteoguadrini.github.io/tags/api/</link>
+    <description>Recent content in api on DevOps journey</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; Matteo Guadrini</copyright>
+    <lastBuildDate>Sun, 04 Sep 2022 14:56:06 +0200</lastBuildDate><atom:link href="https://matteoguadrini.github.io/tags/api/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Python NOSQL Api</title>
+      <link>https://matteoguadrini.github.io/posts/python-nosql-api/</link>
+      <pubDate>Sun, 04 Sep 2022 14:56:06 +0200</pubDate>
+      
+      <guid>https://matteoguadrini.github.io/posts/python-nosql-api/</guid>
+      <description>The world of databases is truly vast. But it is governed by a standard that respects the SQL language API. But there is another world; that of NOSQL databases.
+A little tidy There are four types of NOSQL databases:
+ Key/Value database Column database Document database Graph database  These four types of databases, unfortunately, do not respond to any API and the various libraries, such as the python ones, have various objects and various methods for extracting and inserting data.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -126,11 +126,11 @@ This section covers setting up a Samba server to share files with Windows client
 To do this server, I&rsquo;m using a Fedora 33 server OS. Let&rsquo;s start by installing the packages needed to make our server a Samba file server.</p>
 <h3 id="install-requirements">Install requirements</h3>
 <p>The packages needed are <em>Kerberos</em>, <em>Samba</em> and <em>WinBind</em>:</p>
-<pre><code class="language-console" data-lang="console"># dnf install krb5-workstation.x86_64 samba-winbind samba-winbind-clients samba samba-client
-</code></pre><h3 id="configure-kerberos">Configure Kerberos</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="gp"># </span>dnf install krb5-workstation.x86_64 samba-winbind samba-winbind-clients samba samba-client
+</code></pre></div><h3 id="configure-kerberos">Configure Kerberos</h3>
 <p>Now let&rsquo;s configure Kerberos with the correct domain, in this case, <em>test.local</em> and its domain controllers:</p>
-<pre><code class="language-console" data-lang="console"># vim /etc/krb5.conf
-</code></pre><div class="highlight"><pre class="chroma"><code class="language-ini" data-lang="ini"><span class="k">[libdefaults]</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="gp"># </span>vim /etc/krb5.conf
+</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ini" data-lang="ini"><span class="k">[libdefaults]</span>
     <span class="na">default_realm</span> <span class="o">=</span> <span class="s">TEST.LOCAL</span>
 
 <span class="k">[realms]</span>
@@ -144,35 +144,35 @@ To do this server, I&rsquo;m using a Fedora 33 server OS. Let&rsquo;s start by i
     <span class="na">.test.local</span> <span class="o">=</span> <span class="s">TEST.LOCAL
 </span><span class="s">    test.local = TEST.LOCAL</span>
 </code></pre></div><p>Now, test a user credential (my user is <em>arthur</em>):</p>
-<pre><code class="language-console" data-lang="console">$ kinit arthur@TEST.LOCAL
-Password for arthur@TEST.LOCAL:
-$ klist -v
-Credentials cache: API:501:9
-        Principal: arthur@TEST.LOCAL
-    Cache version: 0
-
-Server: krbtgt/TEST.LOCAL@TEST.LOCAL
-Client: arthur@TEST.LOCAL
-Ticket etype: aes128-cts-hmac-sha1-96
-Ticket length: 256
-Auth time:  Apr 30 16:11:36 2021
-End time:   Apr 30 02:11:22 2021
-Renew till: Apr 30 16:11:36 2021
-Ticket flags: pre-authent, initial, renewable, forwardable
-Addresses: addressless
-</code></pre><h3 id="configure-winbind">Configure WinBind</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="gp">$ </span>kinit arthur@TEST.LOCAL
+<span class="go">Password for arthur@TEST.LOCAL:
+</span><span class="go"></span><span class="gp">$ </span>klist -v
+<span class="go">Credentials cache: API:501:9
+</span><span class="go">        Principal: arthur@TEST.LOCAL
+</span><span class="go">    Cache version: 0
+</span><span class="go"></span><span class="err">
+</span><span class="err"></span><span class="go">Server: krbtgt/TEST.LOCAL@TEST.LOCAL
+</span><span class="go">Client: arthur@TEST.LOCAL
+</span><span class="go">Ticket etype: aes128-cts-hmac-sha1-96
+</span><span class="go">Ticket length: 256
+</span><span class="go">Auth time:  Apr 30 16:11:36 2021
+</span><span class="go">End time:   Apr 30 02:11:22 2021
+</span><span class="go">Renew till: Apr 30 16:11:36 2021
+</span><span class="go">Ticket flags: pre-authent, initial, renewable, forwardable
+</span><span class="go">Addresses: addressless
+</span></code></pre></div><h3 id="configure-winbind">Configure WinBind</h3>
 <p>Now let&rsquo;s configure Winbind so that you can login with the domain users just configured in kerberos.
 Edit the file below and look for the three lines and replace them with the values described here</p>
-<pre><code class="language-console" data-lang="console"># vim /etc/nsswitch.conf
-</code></pre><div class="highlight"><pre class="chroma"><code class="language-ini" data-lang="ini"><span class="na">...</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="gp"># </span>vim /etc/nsswitch.conf
+</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ini" data-lang="ini"><span class="na">...</span>
 <span class="na">passwd:     files winbind</span>
 <span class="na">group:      files winbind</span>
 <span class="na">shadow:     files winbind</span>
 <span class="na">...</span>
 </code></pre></div><h3 id="configure-samba-share">Configure Samba share</h3>
 <p>Once Kerberos is configured to communicate with your domain controllers, let&rsquo;s configure Samba.</p>
-<pre><code class="language-console" data-lang="console"># vim /etc/samba/smb.conf
-</code></pre><div class="highlight"><pre class="chroma"><code class="language-ini" data-lang="ini"><span class="k">[global]</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="gp"># </span>vim /etc/samba/smb.conf
+</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ini" data-lang="ini"><span class="k">[global]</span>
 <span class="c1"># No .tld</span>
 <span class="na">workgroup</span> <span class="o">=</span> <span class="s">TEST</span>
 <span class="c1"># Active Directory System</span>
@@ -231,26 +231,26 @@ Edit the file below and look for the three lines and replace them with the value
 </code></pre></div><p>Remember to enter users in the <em>TEST\Shared_Group</em> enabled to read and write in our share.</p>
 <h3 id="configure-services">Configure services</h3>
 <p>We enable and start Samba:</p>
-<pre><code class="language-console" data-lang="console"># systemctl start smb nmb winbind
-# systemctl enable smb nmb winbind
-</code></pre><p>Let&rsquo;s join our Linux server with the <em>TEST.LOCAL</em> domain and disable <em>&ldquo;Guests&rdquo;</em> groups to access on our share folder:</p>
-<pre><code class="language-console" data-lang="console"># net -s /dev/null groupmap add sid=S-1-5-32-546 unixgroup=nobody type=builtin
-# net ads join -U administrator
-</code></pre><h2 id="create-the-share">Create the share</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="gp"># </span>systemctl start smb nmb winbind
+<span class="gp"># </span>systemctl <span class="nb">enable</span> smb nmb winbind
+</code></pre></div><p>Let&rsquo;s join our Linux server with the <em>TEST.LOCAL</em> domain and disable <em>&ldquo;Guests&rdquo;</em> groups to access on our share folder:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="gp"># </span>net -s /dev/null groupmap add <span class="nv">sid</span><span class="o">=</span>S-1-5-32-546 <span class="nv">unixgroup</span><span class="o">=</span>nobody <span class="nv">type</span><span class="o">=</span><span class="nb">builtin</span>
+<span class="gp"># </span>net ads join -U administrator
+</code></pre></div><h2 id="create-the-share">Create the share</h2>
 <p>Finally we can create our share folder named <em>shared</em> and assign it the correct permissions at the share level.</p>
-<pre><code class="language-console" data-lang="console"># mkdir /shared
-# chmod -R 0772 /shared
-# chgrp -R &quot;Domain Users&quot; /shared
-</code></pre><p>Now test the samba share with samba client.</p>
-<pre><code class="language-console" data-lang="console">$ smbclient //localhost/Shared-Name -U arthur%password
-</code></pre><h2 id="configure-nfs">Configure NFS</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="gp"># </span>mkdir /shared
+<span class="gp"># </span>chmod -R <span class="m">0772</span> /shared
+<span class="gp"># </span>chgrp -R <span class="s2">&#34;Domain Users&#34;</span> /shared
+</code></pre></div><p>Now test the samba share with samba client.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="gp">$ </span>smbclient //localhost/Shared-Name -U arthur%password
+</code></pre></div><h2 id="configure-nfs">Configure NFS</h2>
 <p>For other Unix machine, is very useful NFS share. Because this, configure it:</p>
-<pre><code class="language-console" data-lang="console"># vim /etc/exports
-</code></pre><div class="highlight"><pre class="chroma"><code class="language-ini" data-lang="ini"><span class="na">/shared 10.10.10.0/24(rw,sync)   # Substitute with your ip address in CIDR notation</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="gp"># </span>vim /etc/exports
+</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ini" data-lang="ini"><span class="na">/shared 10.10.10.0/24(rw,sync)   # Substitute with your ip address in CIDR notation</span>
 </code></pre></div><p>And enable services</p>
-<pre><code class="language-console" data-lang="console"># systemctl start rpcbind nfs-server
-# systemctl enable rpcbind nfs-server
-</code></pre><h2 id="conclusion">Conclusion</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="gp"># </span>systemctl start rpcbind nfs-server
+<span class="gp"># </span>systemctl <span class="nb">enable</span> rpcbind nfs-server
+</code></pre></div><h2 id="conclusion">Conclusion</h2>
 <p>Now, all that remains is to connect from a Windows machine (or Linux, why not, with samba client) and write and read files.
 This is a good way to merge two apparently incompatible worlds when it comes to sharing files and folders.</p>
 <p>Another advantage of having a file server on the Unix platform is that you can automate a lot of tasks through scripts created with bash, perl or python. Also, if you could map the same shared folder with samba also with the NFS protocol, a more practical way for Unix platforms.</p>
