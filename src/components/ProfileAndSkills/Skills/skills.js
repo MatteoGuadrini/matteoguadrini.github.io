@@ -1,0 +1,23 @@
+const skills = [
+  { name: "Python", link: "" },
+  { name: "Rust", link: "" },
+  { name: "PHP", link: "" },
+  { name: ".NET", link: "" },
+  { name: "Powershell", link: "" },
+  { name: "Javascript", link: "" },
+  { name: "Bash", link: "" },
+  { name: "Perl", link: "" },
+  { name: "Linux", link: "" },
+  { name: "Unit Testing", link: "" },
+  { name: "Docker", link: "" },
+  { name: "Podman", link: "" },
+  { name: "Kubernetes", link: "" },
+  { name: "VMWare EsXi", link: "" },
+  { name: "CircleCI", link: "" },
+  { name: "MongoDB", link: "" },
+  { name: "CouchDB", link: "" },
+  { name: "SQL", link: "" },
+  { name: "PostgreSQL", link: "" },
+  { name: "MySQL", link: "" },
+]
+export default skills
