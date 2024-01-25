@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkgatsby_starter_default=self.webpackChunkgatsby_starter_default||[]).push([[700],{7683:function(e,t,a){a.r(t);var s=a(7294);t.default=function(e){let{interests:t}=e;return s.createElement("div",{className:"yui-gf last"},s.createElement("div",{className:"yui-u first"},s.createElement("h2",null,"Interests")),void 0!==t&&t.map(((e,t)=>s.createElement("div",{className:"yui-u",key:t},s.createElement("h2",null,e.description)))))}}}]);
+//# sourceMappingURL=component---src-pages-index-profile-and-skills-interests-index-js-a2bfea555be2f6b47334.js.map
