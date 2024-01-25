@@ -1,7 +1,7 @@
 
 # My personal blog and site
 
-This is my CV site and my personal blog. If you like the items, please leave a star.
+This is my CV site. If you like it, please leave a star.
 
 ## My PyCV
 
@@ -27,17 +27,14 @@ class PrintColor:
 name = "Matteo"
 surname = "Guadrini"
 friendly_name = "GU"
-real_job = "Python developer"
+real_job = "Python/Rust developer"
 job_title = "DevOps"
-my_blog = "https://matteoguadrini.github.io"
-my_site = "https://matteoguadrini.github.io/about"
+my_site = "https://matteoguadrini.github.io"
 magic_number = 42
 
 print("Welcome to my personal site!")
 print("CV site: ", end='')
 print(PrintColor.DARKCYAN + "{0}".format(my_site) + PrintColor.END)
-print("Blog site: ", end='')
-print(PrintColor.CYAN + "{0}".format(my_blog) + PrintColor.END)
 print("###############################")
 print("My name is ", end='')
 print(PrintColor.GREEN + "{0} {1}".format(name, surname) + PrintColor.END)
