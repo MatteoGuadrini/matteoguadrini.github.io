@@ -2,7 +2,7 @@ const experiences = [
   {
     company: "BANCA WIDIBA",
     title: "Senior Devops",
-    date: "Gen 2018 - Present",
+    date: "Jan 2018 - Present",
     description: `
     <ol>
       <li> Finding a solution to resolving, with some open source technology.</li>
@@ -20,7 +20,7 @@ const experiences = [
   {
     company: "DECHIT",
     title: "IT System Specialist",
-    date: "Jul 2013 - Gen 2018",
+    date: "Jul 2013 - Jan 2018",
     description: `
     <ol>
       <li> Management and installation of Linux systems.</li>
