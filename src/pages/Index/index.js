@@ -2,6 +2,7 @@ import React from "react"
 import PersonalInformation from "./PersonalInformation"
 import ProfileAndSkills from "./ProfileAndSkills"
 import Resume from "../../assets/files/Resume.pdf"
+import Cert from "../../assets/files/Cert.pdf"
 
 function index() {
   return (
@@ -12,6 +13,7 @@ function index() {
         email={"matteo.guadrini@hotmail.it"}
         // phoneNumber={"+989138406080"}
         pdfLink={Resume}
+        certLink={Cert}
       />
       <ProfileAndSkills />
     </>

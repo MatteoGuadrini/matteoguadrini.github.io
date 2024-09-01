@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 
-function index({ Author, HeadTitle, email, phoneNumber, pdfLink }) {
+function index({ Author, HeadTitle, email, phoneNumber, pdfLink, certLink }) {
   return (
     <div id="hd">
       <div className="yui-gc">
@@ -15,6 +15,9 @@ function index({ Author, HeadTitle, email, phoneNumber, pdfLink }) {
             <h3>
               <a id="pdf" href={pdfLink}>
                 Download PDF
+              </a>
+              <a id="pdf" href={certLink}>
+                Download Certificate
               </a>
             </h3>
             <h3>
